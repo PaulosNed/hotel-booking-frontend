@@ -1,27 +1,50 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=IM+Fell+French+Canon&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lato&family=Neucha&family=Poppins&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lato&family=Neucha&family=Nunito&family=Poppins&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fira+Code&family=Lato&family=Neucha&family=Nunito&family=Poppins&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+.font-poppins {
+  font-family: 'Poppins';
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
+.font-montserrat {
+  font-family: 'Montserrat';
 }
 
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+.font-canon {
+  font-family: 'IM Fell French Canon';
+}
+
+
+.btn-blue {
+  @apply bg-blue-first rounded-lg border text-white
+}
+.btn-blue-outline {
+  @apply bg-transparent rounded-lg border border-primary-color text-primary-color
+}
+
+.btn {
+  @apply py-4 px-8 bg-primary rounded-xl font-semibold transition-all hover:scale-105 duration-500
+}
+
+.btn-small {
+  @apply py-3 px-8 bg-primary text-white rounded-xl transition-all hover:scale-105 duration-500  disabled:cursor-not-allowed disabled:bg-blue-200
+}
+
+.btn-light {
+  @apply py-2 px-6 rounded-full text-xs transition-all hover:scale-105 duration-500
+}
+
+.blog-tag {
+  @apply  text-sm px-6 py-2 rounded-full
+}
+
+.page {
+  @apply w-8 h-8 flex justify-center items-center hover:cursor-pointer rounded-lg
 }
