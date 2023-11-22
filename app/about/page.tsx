@@ -6,7 +6,7 @@ const page = () => {
 
   return (
     <div className="flex flex-col space-y-28 pb-10">
-      <div className="w-full h-[200px] relative">
+      <div className="w-full h-[120px] md:h-[200px] relative">
         <div
           className="absolute inset-0"
           style={{
@@ -21,7 +21,7 @@ const page = () => {
         </div>
       </div>
 
-      <div className="w-1/2 mx-auto">
+      <div className="w-11/12 md:w-1/2 mx-auto">
         <div className="flex flex-col space-y-16 items-center">
           <h1 className="font-bold font-montserrat text-4xl">Since 2023</h1>
           <Image

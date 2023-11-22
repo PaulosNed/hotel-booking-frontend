@@ -29,7 +29,7 @@ const Page: React.FC = () => {
 
   return (
     <div className="flex flex-col space-y-28 pb-10">
-      <div className="w-full h-[200px] relative">
+      <div className="w-full h-[120px] md:h-[200px] relative">
         <div
           className="absolute inset-0"
           style={{
@@ -46,9 +46,9 @@ const Page: React.FC = () => {
         </div>
       </div>
 
-      <div className="w-10/12 pt-10 mx-auto py-10 flex flex-col md:flex-row gap-16">
+      <div className="md:w-10/12 md:pt-10 mx-auto md:py-10 flex flex-col md:flex-row md:space-x-16">
         <iframe
-          className="w-full rounded-xl"
+          className="w-full md:rounded-xl"
           title="address"
           src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3940.9081050442514!2d38.75518557472648!3d8.980603391078771!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x164b85542dc201d7%3A0xef0ddd925c3c1f91!2sSilicon%20Valley%20College!5e0!3m2!1sen!2set!4v1682103070604!5m2!1sen!2set"
           width="600"
@@ -60,7 +60,7 @@ const Page: React.FC = () => {
         ></iframe>
 
         <div className="w-full mx-auto py-10">
-          <p className="text-6xl font-inter mb-10 font-bold">Contact Us</p>
+          <p className="text-4xl md:text-6xl font-inter mb-10 font-bold">Contact Us</p>
           <div className="mt-16">
             <form
               target="_blank"

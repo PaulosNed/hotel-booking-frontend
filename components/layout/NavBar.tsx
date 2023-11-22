@@ -38,12 +38,12 @@ export const NavBar = () => {
   ];
 
   return (
-    <div className="w-full py-6 px-12 bg-white z-40 shadow-lg fixed">
+    <div className="w-full py-6 px-2 md:px-12 bg-white z-40 shadow-lg fixed">
       {/* Desktop view */}
       <div className="hidden md:flex justify-between items-center font-montserrat">
         {/* logo section */}
         <div>
-          <Image src="/images/logo.jpg" alt="A2SV logo" width={120} height={50} />
+          <Image src="/images/logo.jpg" alt="logo" width={120} height={50} />
         </div>
 
         {/* Navigation section */}
@@ -64,7 +64,7 @@ export const NavBar = () => {
       <div className="flex md:hidden justify-between font-montserrat">
         {/* logo section */}
         <div>
-          <Image src={A2SVLogo} alt="A2SV logo" width={120} height={50} />
+          <Image src="/images/logo.jpg" alt="logo" width={120} height={50} />
         </div>
 
         <div className="flex flex-col items-end relative">
@@ -78,8 +78,8 @@ export const NavBar = () => {
               {navItems.map((nav: NavItems) => (
                 <LinkItems key={nav.name} name={nav.name} link={nav.link} />
               ))}
-              <button className="btn">Login</button>
-              <button className="btn">Donate</button>
+              {/* <button className="btn">Login</button>
+              <button className="btn">Donate</button> */}
             </div>
           )}
         </div>
