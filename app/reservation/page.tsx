@@ -1,42 +1,50 @@
-import RoomCard from "@/components/rooms/RoomCard";
-import { Room } from "@/models/Room";
-import React from "react";
+"use client"
 
-const RoomsPage = () => {
-  const rooms: Room[] = [
+import React from "react";
+import { DateRange, Range } from "react-date-range";
+import { addDays } from 'date-fns';
+import { useState } from "react";
+
+const ReservationPage = () => {
+  const bgImageUrl = "/images/home/backgroundHotel.jpg";
+  const [state, setState] = useState<Range[]>([
     {
-      id: 1,
-      name: "Deluxe Suite",
-      photo:
-        "https://plus.unsplash.com/premium_photo-1661876306620-f2f2989f8f8b?q=80&w=1000&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTd8fGRlbHV4ZSUyMHJvb218ZW58MHx8MHx8fDA%3D",
-      description:
-        "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sunt esse excepturi perspiciatis autem, ad, nobis velit placeat id quibusdam vero fuga numquam provident sint quae possimus ut ducimus quam animi?",
-      service_provided: ["food", "shower", "tv"],
-      capacity: 2,
-      bedNumber: 30,
-      status: false,
-      price: 200,
+      startDate: new Date(),
+      endDate: new Date(),
+      key: "selection",
     },
-  ];
+  ]);
 
   return (
-    <div className="md:w-10/12 mx-auto flex flex-col space-y-10 px-10">
-      {rooms?.map((room: Room) => (
-        <RoomCard
-          price={room.price}
-          key={room.id.toString()}
-          name={room.name}
-          photo={room.photo}
-          description={room.description}
-          service_provided={room.service_provided}
-          capacity={room.capacity}
-          bedNumber={room.bedNumber}
-          status={room.status}
-          id={room.id}
-        />
-      ))}
+    <div className="flex flex-col relative">
+      <div className="w-full h-[120px] md:h-[250px] relative">
+        <div
+          className="absolute inset-0"
+          style={{
+            backgroundImage: `url(${bgImageUrl})`,
+            backgroundSize: "cover",
+            backgroundPosition: "center",
+          }}
+        ></div>
+        <div className="absolute inset-0 bg-black opacity-50"></div>
+        <div className="relative h-full flex flex-col space-y-16 justify-center items-center text-center text-white font-montserrat z-10">
+          <p className="mt-2 text-2xl md:text-5xl uppercase">Reservation</p>
+        </div>
+        <div className="relative bottom-0 -mt-14 h-28 w-8/12 mx-auto shadow-xl bg-white z-10">
+          <div className="px-4 md:px-10 flex flex-col md:flex-row gap-4 items-center">
+            <DateRange
+              minDate={addDays(new Date(), 0)}
+              editableDateInputs={true}
+              onChange={(item: any) => setState([item.selection])}
+              moveRangeOnFirstSelection={false}
+              ranges={state}
+              className="h-full"
+            />
+          </div>
+        </div>
+      </div>
     </div>
   );
 };
 
-export default RoomsPage;
+export default ReservationPage;

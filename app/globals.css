@@ -30,11 +30,11 @@
 }
 
 .btn {
-  @apply py-4 px-8 bg-primary rounded-xl font-semibold transition-all hover:scale-105 duration-500
+  @apply py-4 px-8 bg-primary rounded-xl font-semibold transition-all hover:scale-105 duration-500  disabled:cursor-not-allowed disabled:bg-blue-200 disabled:hover:scale-100
 }
 
 .btn-small {
-  @apply py-3 px-8 bg-primary text-white rounded-xl transition-all hover:scale-105 duration-500  disabled:cursor-not-allowed disabled:bg-blue-200
+  @apply py-3 px-8 bg-primary text-white rounded-xl transition-all hover:scale-105 duration-500  disabled:cursor-not-allowed disabled:bg-blue-200 disabled:hover:scale-100
 }
 
 .btn-light {

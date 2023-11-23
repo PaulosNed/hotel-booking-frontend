@@ -10,9 +10,9 @@ const RoomCard: React.FC<Room> = (room) => {
       <div className="flex justify-between">
         <div className="flex space-x-8">
           <Image
-            src={room.photo}
+            src={room.cover_photo}
             alt={"room"}
-            className="w-64 h-56 object-cover"
+            className="w-80 h-56 object-cover"
             width={200}
             height={200}
           />

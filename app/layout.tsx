@@ -1,4 +1,8 @@
 import "./globals.css";
+import 'react-date-range/dist/styles.css'; // main css file
+import 'react-date-range/dist/theme/default.css'; // theme css file
+
+
 import type { Metadata } from "next";
 import { Poppins } from "next/font/google";
 import { NavBar } from "@/components/layout/NavBar";

@@ -1,7 +1,7 @@
 export interface Room {
     id: Number,
     name: string,
-    photo: string,
+    cover_photo: string,
     description: string,
     service_provided: string[],
     capacity: Number,

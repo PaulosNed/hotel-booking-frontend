@@ -69,7 +69,7 @@ export const NavBar = () => {
 
         <div className="flex flex-col items-end relative">
           <button onClick={() => setIsMenuToggled(!isMenuToggled)}>
-            <Image src={"./images/burger.svg"} alt="" width={40} height={40} />
+            <Image src={"/images/burger.svg"} alt="" width={40} height={40} />
           </button>
 
           {/* Navigation section */}
