@@ -16,6 +16,7 @@ const RoomsPage = () => {
       bedNumber: 30,
       status: false,
       price: 200,
+      photos: []
     },
   ];
 
@@ -33,6 +34,7 @@ const RoomsPage = () => {
           bedNumber={room.bedNumber}
           status={room.status}
           id={room.id}
+          photos={room.photos}
         />
       ))}
     </div>

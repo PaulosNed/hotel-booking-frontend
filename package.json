@@ -9,6 +9,13 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@emotion/react": "^11.11.1",
+    "@emotion/styled": "^11.11.0",
+    "@mui/base": "^5.0.0-beta.24",
+    "@mui/icons-material": "^5.14.18",
+    "@mui/material": "^5.14.18",
+    "@mui/system": "^5.14.18",
+    "@mui/x-date-pickers": "^6.18.2",
     "@reduxjs/toolkit": "^1.9.7",
     "@types/react-date-range": "^1.4.8",
     "date-fns": "^2.30.0",
@@ -17,12 +24,16 @@
     "react-date-range": "^1.4.0",
     "react-dom": "^18",
     "react-hook-form": "^7.47.0",
-    "react-redux": "^8.1.3"
+    "react-redux": "^8.1.3",
+    "react-select": "^5.8.0",
+    "react-slick": "^0.29.0",
+    "slick-carousel": "^1.8.1"
   },
   "devDependencies": {
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
+    "@types/react-slick": "^0.23.12",
     "autoprefixer": "^10",
     "eslint": "^8",
     "eslint-config-next": "13.5.6",

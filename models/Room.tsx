@@ -8,4 +8,5 @@ export interface Room {
     bedNumber: Number,
     status: Boolean,
     price: Number,
+    photos: string[],
 }

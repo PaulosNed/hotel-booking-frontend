@@ -1,13 +1,13 @@
 import { configureStore, getDefaultMiddleware } from '@reduxjs/toolkit'
-import { authApi } from './auth/authApi'
+import { roomsApi } from './rooms/roomsApi'
 
 
 export const store = configureStore({
   reducer: {
-    [authApi.reducerPath]: authApi.reducer,
+    [roomsApi.reducerPath]: roomsApi.reducer,
   },
 
-  middleware: getDefaultMiddleware => getDefaultMiddleware().concat(authApi.middleware)
+  middleware: getDefaultMiddleware => getDefaultMiddleware().concat(roomsApi.middleware)
 })
 
 export type RootState = ReturnType<typeof store.getState>
