@@ -1,12 +1,12 @@
 export interface Room {
+    room_id?: Number,
     id: Number,
     name: string,
-    cover_photo: string,
+    image: string,
     description: string,
-    service_provided: string[],
+    services: string,
     capacity: Number,
     bedNumber: Number,
     status: Boolean,
     price: Number,
-    photos: string[],
 }

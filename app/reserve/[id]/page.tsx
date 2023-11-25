@@ -20,11 +20,11 @@ const Page = () => {
   const room: Room = {
     id: 1,
     name: "Deluxe Suite",
-    cover_photo:
+    image:
       "https://plus.unsplash.com/premium_photo-1661876306620-f2f2989f8f8b?q=80&w=1000&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTd8fGRlbHV4ZSUyMHJvb218ZW58MHx8MHx8fDA%3D",
     description:
       "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sunt esse excepturi perspiciatis autem, ad, nobis velit placeat id quibusdam vero fuga numquam provident sint quae possimus ut ducimus quam animi?",
-    service_provided: ["food", "shower", "tv", "dry cleaning", "prostitute"],
+    services: "food shower tv",
     capacity: 2,
     bedNumber: 30,
     status: false,

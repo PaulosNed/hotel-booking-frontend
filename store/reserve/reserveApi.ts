@@ -1,7 +1,7 @@
-import { Room } from "@/models/Room";
+
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
-const BASE_URL = "https://a2sv-backend.onrender.com/api";
+const BASE_URL = "http://127.0.0.1:8000";
 
 export const reserveApi = createApi({
   reducerPath: "reserveApi",
@@ -15,10 +15,6 @@ export const reserveApi = createApi({
           body: data,
         })
       }),
-
-    getSingleRoom: builder.query<Room, any>({
-      query: (id) => `/rooms/${id}`,
-    }),
 
   }),
 });

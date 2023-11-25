@@ -1,19 +1,25 @@
 "use client";
 
-import React from "react";
+import React, { useEffect } from "react";
 import { useState } from "react";
 import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 import Select from "react-select";
+
+
+import { useGetAvialableRoomsQuery } from "@/store/availability/availabilityApi";
+import { useGetAllRoomsQuery } from "@/store/rooms/roomsApi";
 import { Room } from "@/models/Room";
 import RoomCard from "@/components/rooms/RoomCard";
 
 const ReservationPage = () => {
   const bgImageUrl = "/images/home/backgroundHotel.jpg";
+  const enviroment = `http://127.0.0.1:8000/media/`
   const [formData, setFormData] = useState({
-    start_date: null,
-    end_date: null,
-    capacity: null,
+    start_date: new Date(),
+    end_date: new Date(new Date().setDate(new Date().getDate() + 1)),
+    capacity: { value: 1, label: "One" },
   });
+
   const capacityOptions: any = [
     { value: 1, label: "One" },
     { value: 2, label: "Two" },
@@ -29,83 +35,138 @@ const ReservationPage = () => {
     }),
   };
 
-  const rooms: Room[] = [
-    {
-      id: 1,
-      name: "Deluxe Suite",
-      cover_photo:
-        "https://plus.unsplash.com/premium_photo-1661876306620-f2f2989f8f8b?q=80&w=1000&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTd8fGRlbHV4ZSUyMHJvb218ZW58MHx8MHx8fDA%3D",
-      description:
-        "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sunt esse excepturi perspiciatis autem, ad, nobis velit placeat id quibusdam vero fuga numquam provident sint quae possimus ut ducimus quam animi?",
-      service_provided: ["food", "shower", "tv"],
-      capacity: 2,
-      bedNumber: 30,
-      status: false,
-      price: 200,
-      photos: []
-    },
-    {
-      id: 1,
-      name: "Deluxe Suite",
-      cover_photo:
-        "https://plus.unsplash.com/premium_photo-1661876306620-f2f2989f8f8b?q=80&w=1000&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTd8fGRlbHV4ZSUyMHJvb218ZW58MHx8MHx8fDA%3D",
-      description:
-        "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sunt esse excepturi perspiciatis autem, ad, nobis velit placeat id quibusdam vero fuga numquam provident sint quae possimus ut ducimus quam animi?",
-      service_provided: ["food", "shower", "tv"],
-      capacity: 2,
-      bedNumber: 30,
-      status: false,
-      price: 200,
-      photos: []
-    },
-    {
-      id: 1,
-      name: "Deluxe Suite",
-      cover_photo:
-        "https://plus.unsplash.com/premium_photo-1661876306620-f2f2989f8f8b?q=80&w=1000&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTd8fGRlbHV4ZSUyMHJvb218ZW58MHx8MHx8fDA%3D",
-      description:
-        "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sunt esse excepturi perspiciatis autem, ad, nobis velit placeat id quibusdam vero fuga numquam provident sint quae possimus ut ducimus quam animi?",
-      service_provided: ["food", "shower", "tv"],
-      capacity: 2,
-      bedNumber: 30,
-      status: false,
-      price: 200,
-      photos: []
-    },
-    {
-      id: 1,
-      name: "Deluxe Suite",
-      cover_photo:
-        "https://plus.unsplash.com/premium_photo-1661876306620-f2f2989f8f8b?q=80&w=1000&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTd8fGRlbHV4ZSUyMHJvb218ZW58MHx8MHx8fDA%3D",
-      description:
-        "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sunt esse excepturi perspiciatis autem, ad, nobis velit placeat id quibusdam vero fuga numquam provident sint quae possimus ut ducimus quam animi?",
-      service_provided: ["food", "shower", "tv"],
-      capacity: 2,
-      bedNumber: 30,
-      status: false,
-      price: 200,
-      photos: []
-    },
-    {
-      id: 1,
-      name: "Deluxe Suite",
-      cover_photo:
-        "https://plus.unsplash.com/premium_photo-1661876306620-f2f2989f8f8b?q=80&w=1000&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTd8fGRlbHV4ZSUyMHJvb218ZW58MHx8MHx8fDA%3D",
-      description:
-        "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sunt esse excepturi perspiciatis autem, ad, nobis velit placeat id quibusdam vero fuga numquam provident sint quae possimus ut ducimus quam animi?",
-      service_provided: ["food", "shower", "tv"],
-      capacity: 2,
-      bedNumber: 30,
-      status: false,
-      price: 200,
-      photos: []
-    },
-  ];
+  // const { data, isLoading, isError, error } = useGetAllRoomsQuery();
+  // console.log(data, `${formData.start_date}`)
+  const request = {
+    start_date: formData.start_date.toISOString().slice(0, 10), 
+    end_date: formData.end_date.toISOString().slice(0, 10), 
+    capacity: formData.capacity.value
+  }
+  
+  // const rooms: Room[] = [
+  //   {
+  //     id: 1,
+  //     name: "Deluxe Suite",
+  //     image:
+  //       "https://plus.unsplash.com/premium_photo-1661876306620-f2f2989f8f8b?q=80&w=1000&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTd8fGRlbHV4ZSUyMHJvb218ZW58MHx8MHx8fDA%3D",
+  //     description:
+  //       "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sunt esse excepturi perspiciatis autem, ad, nobis velit placeat id quibusdam vero fuga numquam provident sint quae possimus ut ducimus quam animi?",
+  //     services: "food",
+  //     capacity: 2,
+  //     bedNumber: 30,
+  //     status: false,
+  //     price: 200
+  //   },
+  //   {
+  //     id: 1,
+  //     name: "Deluxe Suite",
+  //     image:
+  //       "https://plus.unsplash.com/premium_photo-1661876306620-f2f2989f8f8b?q=80&w=1000&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTd8fGRlbHV4ZSUyMHJvb218ZW58MHx8MHx8fDA%3D",
+  //     description:
+  //       "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sunt esse excepturi perspiciatis autem, ad, nobis velit placeat id quibusdam vero fuga numquam provident sint quae possimus ut ducimus quam animi?",
+  //     services: "food",
+  //     capacity: 2,
+  //     bedNumber: 30,
+  //     status: false,
+  //     price: 200,
+      
+  //   },
+  //   {
+  //     id: 1,
+  //     name: "Deluxe Suite",
+  //     image:
+  //       "https://plus.unsplash.com/premium_photo-1661876306620-f2f2989f8f8b?q=80&w=1000&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTd8fGRlbHV4ZSUyMHJvb218ZW58MHx8MHx8fDA%3D",
+  //     description:
+  //       "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sunt esse excepturi perspiciatis autem, ad, nobis velit placeat id quibusdam vero fuga numquam provident sint quae possimus ut ducimus quam animi?",
+  //     services: "food",
+  //     capacity: 2,
+  //     bedNumber: 30,
+  //     status: false,
+  //     price: 200,
+  //   },
+  //   {
+  //     id: 1,
+  //     name: "Deluxe Suite",
+  //     image:
+  //       "https://plus.unsplash.com/premium_photo-1661876306620-f2f2989f8f8b?q=80&w=1000&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTd8fGRlbHV4ZSUyMHJvb218ZW58MHx8MHx8fDA%3D",
+  //     description:
+  //       "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sunt esse excepturi perspiciatis autem, ad, nobis velit placeat id quibusdam vero fuga numquam provident sint quae possimus ut ducimus quam animi?",
+  //     services: "food",
+  //     capacity: 2,
+  //     bedNumber: 30,
+  //     status: false,
+  //     price: 200,
+      
+  //   },
+  //   {
+  //     id: 1,
+  //     name: "Deluxe Suite",
+  //     image:
+  //       "https://plus.unsplash.com/premium_photo-1661876306620-f2f2989f8f8b?q=80&w=1000&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTd8fGRlbHV4ZSUyMHJvb218ZW58MHx8MHx8fDA%3D",
+  //     description:
+  //       "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sunt esse excepturi perspiciatis autem, ad, nobis velit placeat id quibusdam vero fuga numquam provident sint quae possimus ut ducimus quam animi?",
+  //     services: "food shower",
+  //     capacity: 2,
+  //     bedNumber: 30,
+  //     status: false,
+  //     price: 200,
+      
+  //   },
+  // ];
+  
+  const { data, isLoading, isError, error, refetch } = useGetAvialableRoomsQuery(request);
+  console.log(data)
+
+  const [rooms, setRooms] = useState<any>([])
+  
+  useEffect(() => {
+    console.log("data", data)
+    if (data) {
+
+      let visited = new Set()
+      const currRooms: any = data?.map((sub: any) => {
+        const currRoom: Room = {
+          room_id: sub.id,
+          id: sub.type[0].pk,
+          name: sub.type[0].fields.name,
+          image: enviroment + sub.type[0].fields.image,
+          description: sub.type[0].fields.description,
+          services: sub.type[0].fields.services,
+          capacity: sub.type[0].fields.capacity,
+          bedNumber: sub.type[0].fields.bedNumber,
+          status: sub.type[0].fields.status,
+          price: sub.type[0].fields.price
+        }
+    
+        if (!visited.has(currRoom.id)) {
+          visited.add(currRoom.id)
+          return currRoom
+        }
+      })
+      const mapRooms = currRooms.filter((room: Room) => room != undefined)
+      console.log("currRooms", mapRooms)
+      setRooms(mapRooms)
+    }
+  }, [data, enviroment])
+
+
+  // console.log("rooms", rooms)
+  
+  
 
   const handleClick = (e: any) => {
-    console.log(formData);
+    const request = {
+      start_date: formData.start_date.toISOString().slice(0, 10), 
+      end_date: formData.end_date.toISOString().slice(0, 10), 
+      capacity: formData.capacity.value
+    }
+    
+  
   };
 
+  if (isLoading) {
+    return <div>Loading.....</div>
+  }
   return (
     <div className="flex flex-col">
       <div className="w-full h-[120px] md:h-[250px] relative">
@@ -141,6 +202,7 @@ const ReservationPage = () => {
                   start_date: newValue,
                 }))
               }
+              format="yyyy-MM-dd"
               slotProps={{
                 textField: {
                   helperText: "MM/DD/YYYY",
@@ -157,6 +219,7 @@ const ReservationPage = () => {
                   end_date: newValue,
                 }))
               }
+              format="yyyy-MM-dd"
               slotProps={{
                 textField: {
                   helperText: "MM/DD/YYYY",
@@ -209,14 +272,13 @@ const ReservationPage = () => {
                   price={room.price}
                   key={room.id.toString()}
                   name={room.name}
-                  cover_photo={room.cover_photo}
+                  image={room.image}
                   description={room.description}
-                  service_provided={room.service_provided}
+                  services={room.services}
                   capacity={room.capacity}
                   bedNumber={room.bedNumber}
                   status={room.status}
                   id={room.id}
-                  photos={room.photos}
                 />
               ))}
             </div>

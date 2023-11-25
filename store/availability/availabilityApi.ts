@@ -1,7 +1,8 @@
+
 import { Room } from "@/models/Room";
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
-const BASE_URL = "https://a2sv-backend.onrender.com/api";
+const BASE_URL = "http://127.0.0.1:8000";
 
 export const availabilityApi = createApi({
   reducerPath: "availabilityApi",
@@ -9,12 +10,7 @@ export const availabilityApi = createApi({
   endpoints: (builder) => ({
     getAvialableRooms: builder.query<Room[], any>({
       query: (data) => ({
-        url: "/avialable-rooms",
-        params:{
-            check_in: data.start_date,
-            check_out: data.end_date,
-            capacity: data.capacity
-        }
+        url: `/booking/available/${data.start_date}/${data.end_date}`
     }),
     }),
 

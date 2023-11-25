@@ -5,12 +5,15 @@ import React from "react";
 
 const RoomCard: React.FC<Room> = (room) => {
   const statusText = room.status ? "Avialable" : "Unavialable";
+
+  const services = room.services.split(" ")
+
   return (
     <Link href={'/rooms/1'} className="shadow-xl h-56 rounded-lg pr-24 hover:bg-secondary hover:cursor-pointer">
       <div className="flex justify-between">
         <div className="flex space-x-8">
           <Image
-            src={room.cover_photo}
+            src={room.image}
             alt={"room"}
             className="w-80 h-56 object-cover"
             width={200}
@@ -40,7 +43,7 @@ const RoomCard: React.FC<Room> = (room) => {
           <div>
             <h1 className="font-semibold pb-2">Services Provided</h1>
             <div className="flex gap-2 flex-wrap">
-              {room.service_provided?.map((tag: string) => (
+              {services?.map((tag: string) => (
                 <p
                   key={tag}
                   className="w-fit rounded-full px-3 py-1 text-xs bg-secondary"
