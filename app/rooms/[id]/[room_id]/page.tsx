@@ -9,6 +9,7 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { useGetSingleRoomQuery } from "@/store/rooms/roomsApi";
+import { useRouter } from "next/router";
 import { useParams } from "next/navigation";
 
 // interface ArrowProps {
@@ -40,7 +41,8 @@ const Page = () => {
     // prevArrow: <PrevArrow />,
   };
 
-  const { id } = useParams()
+//   const router = useRouter()
+  const { id, room_id } = useParams()
   const { data: room, isLoading, isError, error } = useGetSingleRoomQuery(id);
 
   const services = room?.services?.split(" ")
@@ -101,9 +103,9 @@ const Page = () => {
             ))}
           </div>
         </div>
-        {/* <Link href={"/reserve/1"} className="self-center btn text-white w-fit">
+        <Link href={`/reserve/${room_id}`} className="self-center btn text-white w-fit">
           Book Now for ${room?.price.toString()}
-        </Link> */}
+        </Link>
       </div>
     </div>
   );

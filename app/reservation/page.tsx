@@ -269,6 +269,7 @@ const ReservationPage = () => {
             <div className="flex flex-col space-y-10">
               {rooms?.map((room: Room) => (
                 <RoomCard
+                  room_id={room.room_id}
                   price={room.price}
                   key={room.id.toString()}
                   name={room.name}
