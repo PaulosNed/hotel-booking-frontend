@@ -10,7 +10,7 @@ export const reserveApi = createApi({
     
     bookRoom: builder.mutation<any, any>({
         query: (data) => ({
-          url: `/reserve/${data.room_id}`,
+          url: `/booking/book/`,
           method: 'POST',
           body: data,
         })

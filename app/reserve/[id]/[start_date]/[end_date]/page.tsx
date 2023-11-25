@@ -1,11 +1,9 @@
 "use client";
 
 import { useForm } from "react-hook-form";
-import { Room } from "@/models/Room";
-import Image from "next/image";
-import Link from "next/link";
 import React from "react";
 import { useParams } from "next/navigation";
+import { useBookRoomMutation } from "@/store/reserve/reserveApi";
 
 interface FormData {
   first_name: string;
@@ -14,24 +12,20 @@ interface FormData {
   email: string;
   phone_number: string;
   zip_code: string;
-  
 }
 
 const Page = () => {
-  const room: Room = {
-    id: 1,
-    name: "Deluxe Suite",
-    image:
-      "https://plus.unsplash.com/premium_photo-1661876306620-f2f2989f8f8b?q=80&w=1000&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTd8fGRlbHV4ZSUyMHJvb218ZW58MHx8MHx8fDA%3D",
-    description:
-      "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sunt esse excepturi perspiciatis autem, ad, nobis velit placeat id quibusdam vero fuga numquam provident sint quae possimus ut ducimus quam animi?",
-    services: "food shower tv",
-    capacity: 2,
-    bedNumber: 30,
-    status: false,
-    price: 200,
-  };
   const { id, start_date, end_date } = useParams();
+  
+  const [
+    bookRoom,
+    {
+      data,
+      isError,
+      isLoading,
+      isSuccess,
+    },
+  ] = useBookRoomMutation();
 
   const {
     register,
@@ -41,15 +35,32 @@ const Page = () => {
   } = useForm<FormData>();
 
   const reserveRoom = async (data: any) => {
-    data.currency = "etb";
-    data.room = Number(id);
-    data.start_date = start_date
-    data.end_date = end_date
-    console.log(data);
+    data.start_date = start_date;
+    data.end_date = end_date;
+
+    const request = {
+      customer_first_name: data.first_name,
+      customer_last_name: data.last_name,
+      customer_email: data.email,
+      customer_phone_number: data.phone_number,
+      start_date: start_date,
+      end_date: end_date,
+      id: Number(id),
+      currency: "etb",
+    };
+
+    console.log(request);
+    const response: any = await bookRoom(request);
+    console.log("respone", response.data.data.checkout_url)
+
+    if (response.data.status == "success") {
+      console.log("in", response.data.data.checkout_url)
+      window.location.href = response.data.data.checkout_url;
+    }
   };
 
   return (
-    <div className="my-28 w-full md:w-8/12 md:shadow-lg md:rounded-lg mx-auto px-4 md:px-10 py-6 md:py-12">
+    <div className="my-10 md:my-28 w-full md:w-8/12 md:shadow-lg md:rounded-lg mx-auto px-4 md:px-10 py-6 md:py-12">
       <form
         className="flex flex-col space-y-2 md:space-y-5"
         onSubmit={handleSubmit(reserveRoom)}
@@ -99,7 +110,9 @@ const Page = () => {
               />
             </div>
             {errors.middle_name && (
-              <small className="text-red-500">{errors.middle_name.message}</small>
+              <small className="text-red-500">
+                {errors.middle_name.message}
+              </small>
             )}
           </div>
 
@@ -125,11 +138,9 @@ const Page = () => {
               <small className="text-red-500">{errors.last_name.message}</small>
             )}
           </div>
-
-          
         </div>
         <div className="w-full flex flex-col md:flex-row">
-        <div className="md:w-1/3 px-2">
+          <div className="md:w-1/3 px-2">
             <label htmlFor="email" className="text-xs font-semibold px-1">
               Email
             </label>
@@ -185,10 +196,7 @@ const Page = () => {
           </div>
 
           <div className="md:w-1/3 px-2">
-            <label
-              htmlFor="zip_code"
-              className="text-xs font-semibold px-1"
-            >
+            <label htmlFor="zip_code" className="text-xs font-semibold px-1">
               Zip Code
             </label>
             <div className="flex">
@@ -196,20 +204,16 @@ const Page = () => {
                 type="text"
                 id="zip_code"
                 className="w-full p-2 rounded-lg border-2 border-gray-200 outline-none focus:border-primary"
-                {...register("zip_code", {
-                })}
+                {...register("zip_code", {})}
                 onKeyUp={() => {
                   trigger("zip_code");
                 }}
               />
             </div>
             {errors.zip_code && (
-              <small className="text-red-500">
-                {errors.zip_code.message}
-              </small>
+              <small className="text-red-500">{errors.zip_code.message}</small>
             )}
           </div>
-
         </div>
         <div className="pt-10 self-center md:w-72 flex justify-center">
           <button className="btn-small text-white" disabled={!isValid}>
