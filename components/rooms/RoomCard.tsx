@@ -9,7 +9,7 @@ const RoomCard: React.FC<Room> = (room) => {
   const services = room.services.split(" ")
 
   return (
-    <Link href={room.room_id ? `rooms/${room.id}/${room.room_id}` :`rooms/${room.id}`} className="shadow-xl h-56 rounded-lg pr-24 hover:bg-secondary hover:cursor-pointer">
+    <Link href={room.room_id ? `rooms/${room.id}/${room.room_id}/${room.start_date}/${room.end_date}` :`rooms/${room.id}`} className="shadow-xl h-56 rounded-lg pr-24 hover:bg-secondary hover:cursor-pointer">
       <div className="flex justify-between">
         <div className="flex space-x-8">
           <Image

@@ -270,6 +270,8 @@ const ReservationPage = () => {
               {rooms?.map((room: Room) => (
                 <RoomCard
                   room_id={room.room_id}
+                  start_date={formData.start_date.toISOString().slice(0, 10)}
+                  end_date={formData.end_date.toISOString().slice(0, 10)}
                   price={room.price}
                   key={room.id.toString()}
                   name={room.name}

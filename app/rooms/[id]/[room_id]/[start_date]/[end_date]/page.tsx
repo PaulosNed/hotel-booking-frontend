@@ -42,7 +42,7 @@ const Page = () => {
   };
 
 //   const router = useRouter()
-  const { id, room_id } = useParams()
+  const { id, room_id, start_date, end_date } = useParams()
   const { data: room, isLoading, isError, error } = useGetSingleRoomQuery(id);
 
   const services = room?.services?.split(" ")
@@ -103,7 +103,7 @@ const Page = () => {
             ))}
           </div>
         </div>
-        <Link href={`/reserve/${room_id}`} className="self-center btn text-white w-fit">
+        <Link href={`/reserve/${room_id}/${start_date}/${end_date}`} className="self-center btn text-white w-fit">
           Book Now for ${room?.price.toString()}
         </Link>
       </div>

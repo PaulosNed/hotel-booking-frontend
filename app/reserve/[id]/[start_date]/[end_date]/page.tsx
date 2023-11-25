@@ -9,11 +9,12 @@ import { useParams } from "next/navigation";
 
 interface FormData {
   first_name: string;
+  middle_name: string;
   last_name: string;
   email: string;
   phone_number: string;
-  start_date: Date;
-  end_date: Date;
+  zip_code: string;
+  
 }
 
 const Page = () => {
@@ -30,7 +31,7 @@ const Page = () => {
     status: false,
     price: 200,
   };
-  const { id } = useParams();
+  const { id, start_date, end_date } = useParams();
 
   const {
     register,
@@ -42,6 +43,8 @@ const Page = () => {
   const reserveRoom = async (data: any) => {
     data.currency = "etb";
     data.room = Number(id);
+    data.start_date = start_date
+    data.end_date = end_date
     console.log(data);
   };
 
@@ -78,6 +81,29 @@ const Page = () => {
           </div>
 
           <div className="md:w-1/3 px-2">
+            <label htmlFor="middle_name" className="text-xs font-semibold px-1">
+              Middle Name
+            </label>
+            <div className="flex">
+              <input
+                type="text"
+                id="middle_name"
+                className="w-full p-2 rounded-lg border-2 border-gray-200 outline-none focus:border-primary"
+                required={true}
+                {...register("middle_name", {
+                  required: "Last Name is Required!!!",
+                })}
+                onKeyUp={() => {
+                  trigger("middle_name");
+                }}
+              />
+            </div>
+            {errors.middle_name && (
+              <small className="text-red-500">{errors.middle_name.message}</small>
+            )}
+          </div>
+
+          <div className="md:w-1/3 px-2">
             <label htmlFor="last_name" className="text-xs font-semibold px-1">
               Last Name
             </label>
@@ -100,7 +126,10 @@ const Page = () => {
             )}
           </div>
 
-          <div className="md:w-1/3 px-2">
+          
+        </div>
+        <div className="w-full flex flex-col md:flex-row">
+        <div className="md:w-1/3 px-2">
             <label htmlFor="email" className="text-xs font-semibold px-1">
               Email
             </label>
@@ -126,8 +155,7 @@ const Page = () => {
               <small className="text-red-500">{errors.email.message}</small>
             )}
           </div>
-        </div>
-        <div className="w-full flex flex-col md:flex-row">
+
           <div className="md:w-1/3 px-2">
             <label
               htmlFor="phone_number"
@@ -157,52 +185,31 @@ const Page = () => {
           </div>
 
           <div className="md:w-1/3 px-2">
-            <label htmlFor="start_date" className="text-xs font-semibold px-1">
-              Start Date
+            <label
+              htmlFor="zip_code"
+              className="text-xs font-semibold px-1"
+            >
+              Zip Code
             </label>
             <div className="flex">
               <input
-                type="date"
-                id="start_date"
+                type="text"
+                id="zip_code"
                 className="w-full p-2 rounded-lg border-2 border-gray-200 outline-none focus:border-primary"
-                required={true}
-                {...register("start_date", {
-                  required: "Start Date is Required!!!",
+                {...register("zip_code", {
                 })}
                 onKeyUp={() => {
-                  trigger("start_date");
+                  trigger("zip_code");
                 }}
               />
             </div>
-            {errors.start_date && (
+            {errors.zip_code && (
               <small className="text-red-500">
-                {errors.start_date.message}
+                {errors.zip_code.message}
               </small>
             )}
           </div>
 
-          <div className="md:w-1/3 px-2">
-            <label htmlFor="end_date" className="text-xs font-semibold px-1">
-              End Date
-            </label>
-            <div className="flex">
-              <input
-                type="date"
-                id="end_date"
-                className="w-full p-2 rounded-lg border-2 border-gray-200 outline-none focus:border-primary"
-                required={true}
-                {...register("end_date", {
-                  required: "End Date is Required!!!",
-                })}
-                onKeyUp={() => {
-                  trigger("end_date");
-                }}
-              />
-            </div>
-            {errors.end_date && (
-              <small className="text-red-500">{errors.end_date.message}</small>
-            )}
-          </div>
         </div>
         <div className="pt-10 self-center md:w-72 flex justify-center">
           <button className="btn-small text-white" disabled={!isValid}>
