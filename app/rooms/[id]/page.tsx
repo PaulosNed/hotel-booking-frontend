@@ -1,6 +1,5 @@
 "use client";
 
-
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
@@ -35,31 +34,33 @@ const Page = () => {
     slidesToShow: 1,
     slidesToScroll: 1,
     autoplay: true,
-    autoplaySpeed: 1500,
+    autoplaySpeed: 3000,
     // nextArrow: <NextArrow />,
     // prevArrow: <PrevArrow />,
   };
 
-  const { id } = useParams()
-  const { data: room, isLoading, isError, error } = useGetSingleRoomQuery(id);
+  const { id } = useParams();
+  const { data: room } = useGetSingleRoomQuery(id);
 
-  const services = room?.services?.split(" ")
-  const photos: string[] = [room?.image as string, room?.image as string, room?.image as string]
+  const services = room?.services?.split(" ");
+  const photos: string[] = [
+    room?.image as string,
+    "https://www.usatoday.com/gcdn/-mm-/05b227ad5b8ad4e9dcb53af4f31d7fbdb7fa901b/c=0-64-2119-1259/local/-/media/USATODAY/USATODAY/2014/08/13/1407953244000-177513283.jpg",
+    "https://nypost.com/wp-content/uploads/sites/2/2022/02/Hotel-feature.jpg?quality=75&strip=all",
+  ];
 
   return (
-    <div className="md:w-8/12 mx-auto px-10 md:pb-20">
+    <div className="w-full md:w-8/12 mx-auto px-3 md:px-10 md:pb-20">
       <div className="flex flex-col space-y-10 md:space-y-16">
-        <div className="w-full relative">
+        <div className="w-full">
           <Slider {...settings}>
-            {photos?.map((image: string) => (
+            {photos?.map((image: string, i: number) => (
               <div key={image} className="relative">
-                <div className="slider-content">
-                  <Image
+                <div className="w-full">
+                  <img
                     src={image}
                     alt="Slide"
-                    className="rounded-xl h-[500px] w-full mx-auto"
-                    width={400}
-                    height={100}
+                    className="rounded-xl w-full h-[200px] md:h-[500px] object-cover mx-auto"
                   />
                   <div className="absolute bottom-0 left-0 w-full z-40 transition-all duration-300">
                     <div className="flex flex-col w-full h-full justify-end py-4 px-8 gap-4">
@@ -86,7 +87,27 @@ const Page = () => {
           <h1 className="text-xl md:text-4xl font-bold font-montserrat">
             Services Provided
           </h1>
-          <div className="w-full grid grid-cols-3 items-center justify-center gap-2">
+          <div className="w-full grid grid-cols-2 md:grid-cols-3 place-items-start gap-2">
+            <div className="flex space-x-2">
+              <Image
+                src={"/images/rooms/green-check.svg"}
+                alt={""}
+                width={4}
+                height={4}
+                className="w-4 h-4 object-cover"
+              />
+              <p className="text-sm text-slate-500">{room?.capacity.toString()} Passangers</p>
+            </div>
+            <div className="flex space-x-2">
+              <Image
+                src={"/images/rooms/green-check.svg"}
+                alt={""}
+                width={4}
+                height={4}
+                className="w-4 h-4 object-cover"
+              />
+              <p className="text-sm text-slate-500">{room?.bedNumber.toString()} Bedrooms</p>
+            </div>
             {services?.map((tag: string) => (
               <div key={tag} className="flex space-x-2">
                 <Image

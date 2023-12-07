@@ -20,7 +20,7 @@ const ReservationPage = () => {
     capacity: { value: 1, label: "One" },
   });
 
-  const capacityOptions: any = [
+  const capacityOptions = [
     { value: 1, label: "One" },
     { value: 2, label: "Two" },
     { value: 3, label: "Three" },
@@ -28,7 +28,7 @@ const ReservationPage = () => {
     { value: 5, label: "Five" },
   ];
   const customStyles = {
-    control: (provided: any, state: any) => ({
+    control: (provided, state) => ({
       ...provided,
       minHeight: "3.5rem", // Adjust the height as needed
       width: "280px", // Adjust the right padding as needed
@@ -43,89 +43,22 @@ const ReservationPage = () => {
     capacity: formData.capacity.value
   }
   
-  // const rooms: Room[] = [
-  //   {
-  //     id: 1,
-  //     name: "Deluxe Suite",
-  //     image:
-  //       "https://plus.unsplash.com/premium_photo-1661876306620-f2f2989f8f8b?q=80&w=1000&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTd8fGRlbHV4ZSUyMHJvb218ZW58MHx8MHx8fDA%3D",
-  //     description:
-  //       "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sunt esse excepturi perspiciatis autem, ad, nobis velit placeat id quibusdam vero fuga numquam provident sint quae possimus ut ducimus quam animi?",
-  //     services: "food",
-  //     capacity: 2,
-  //     bedNumber: 30,
-  //     status: false,
-  //     price: 200
-  //   },
-  //   {
-  //     id: 1,
-  //     name: "Deluxe Suite",
-  //     image:
-  //       "https://plus.unsplash.com/premium_photo-1661876306620-f2f2989f8f8b?q=80&w=1000&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTd8fGRlbHV4ZSUyMHJvb218ZW58MHx8MHx8fDA%3D",
-  //     description:
-  //       "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sunt esse excepturi perspiciatis autem, ad, nobis velit placeat id quibusdam vero fuga numquam provident sint quae possimus ut ducimus quam animi?",
-  //     services: "food",
-  //     capacity: 2,
-  //     bedNumber: 30,
-  //     status: false,
-  //     price: 200,
-      
-  //   },
-  //   {
-  //     id: 1,
-  //     name: "Deluxe Suite",
-  //     image:
-  //       "https://plus.unsplash.com/premium_photo-1661876306620-f2f2989f8f8b?q=80&w=1000&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTd8fGRlbHV4ZSUyMHJvb218ZW58MHx8MHx8fDA%3D",
-  //     description:
-  //       "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sunt esse excepturi perspiciatis autem, ad, nobis velit placeat id quibusdam vero fuga numquam provident sint quae possimus ut ducimus quam animi?",
-  //     services: "food",
-  //     capacity: 2,
-  //     bedNumber: 30,
-  //     status: false,
-  //     price: 200,
-  //   },
-  //   {
-  //     id: 1,
-  //     name: "Deluxe Suite",
-  //     image:
-  //       "https://plus.unsplash.com/premium_photo-1661876306620-f2f2989f8f8b?q=80&w=1000&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTd8fGRlbHV4ZSUyMHJvb218ZW58MHx8MHx8fDA%3D",
-  //     description:
-  //       "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sunt esse excepturi perspiciatis autem, ad, nobis velit placeat id quibusdam vero fuga numquam provident sint quae possimus ut ducimus quam animi?",
-  //     services: "food",
-  //     capacity: 2,
-  //     bedNumber: 30,
-  //     status: false,
-  //     price: 200,
-      
-  //   },
-  //   {
-  //     id: 1,
-  //     name: "Deluxe Suite",
-  //     image:
-  //       "https://plus.unsplash.com/premium_photo-1661876306620-f2f2989f8f8b?q=80&w=1000&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTd8fGRlbHV4ZSUyMHJvb218ZW58MHx8MHx8fDA%3D",
-  //     description:
-  //       "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sunt esse excepturi perspiciatis autem, ad, nobis velit placeat id quibusdam vero fuga numquam provident sint quae possimus ut ducimus quam animi?",
-  //     services: "food shower",
-  //     capacity: 2,
-  //     bedNumber: 30,
-  //     status: false,
-  //     price: 200,
-      
-  //   },
-  // ];
+  const { data, refetch } = useGetAvialableRoomsQuery(
+    request,
+    {
+      queryKey: ['getAvialableRooms', request], // Specify queryKey with the parameters
+    }
+  );
   
-  const { data, isLoading, isError, error, refetch } = useGetAvialableRoomsQuery(request);
-  console.log(data)
-
-  const [rooms, setRooms] = useState<any>([])
+  const [rooms, setRooms] = useState([])
   
   useEffect(() => {
     console.log("data", data)
     if (data) {
-
+      
       let visited = new Set()
-      const currRooms: any = data?.map((sub: any) => {
-        const currRoom: Room = {
+      const currRooms = data?.map((sub) => {
+        const currRoom = {
           room_id: sub.id,
           id: sub.type[0].pk,
           name: sub.type[0].fields.name,
@@ -143,30 +76,35 @@ const ReservationPage = () => {
           return currRoom
         }
       })
-      const mapRooms = currRooms.filter((room: Room) => room != undefined)
+      const mapRooms = currRooms.filter((room) => room != undefined)
       console.log("currRooms", mapRooms)
       setRooms(mapRooms)
     }
   }, [data, enviroment])
-
-
+  
+  
   // console.log("rooms", rooms)
   
   
-
-  const handleClick = (e: any) => {
-    const request = {
+  
+  const handleClick = async(e) => {
+    const newRequest = {
       start_date: formData.start_date.toISOString().slice(0, 10), 
       end_date: formData.end_date.toISOString().slice(0, 10), 
       capacity: formData.capacity.value
     }
+
+    try {
+      // Use refetch with the new parameters by updating the queryKey
+      console.log("in try", newRequest)
+      const newData = await refetch(['getAvialableRooms', newRequest]);
+      console.log("success", newData)
+    } catch (error) {
+      console.error('Error refetching data:', error);
+    }
     
-  
   };
 
-  if (isLoading) {
-    return <div>Loading.....</div>
-  }
   return (
     <div className="flex flex-col">
       <div className="w-full h-[120px] md:h-[250px] relative">
@@ -187,7 +125,7 @@ const ReservationPage = () => {
             {/* <DateRange
               minDate={addDays(new Date(), 0)}
               editableDateInputs={true}
-              onChange={(item: any) => setState([item.selection])}
+              onChange={(item) => setState([item.selection])}
               moveRangeOnFirstSelection={false}
               ranges={state}
               className="h-full"
@@ -197,7 +135,7 @@ const ReservationPage = () => {
               className="w-full md:w-fit"
               value={formData.start_date}
               onChange={(newValue) =>
-                setFormData((prev: any) => ({
+                setFormData((prev) => ({
                   ...prev,
                   start_date: newValue,
                 }))
@@ -214,7 +152,7 @@ const ReservationPage = () => {
               className="w-full md:w-fit"
               value={formData.end_date}
               onChange={(newValue) =>
-                setFormData((prev: any) => ({
+                setFormData((prev) => ({
                   ...prev,
                   end_date: newValue,
                 }))
@@ -233,7 +171,7 @@ const ReservationPage = () => {
                 classNamePrefix="Capacity"
                 defaultValue={1}
                 onChange={(newValue) => {
-                  setFormData((prev: any) => ({
+                  setFormData((prev) => ({
                     ...prev,
                     capacity: newValue,
                   }));
@@ -267,7 +205,7 @@ const ReservationPage = () => {
             </div> */}
 
             <div className="flex flex-col space-y-10">
-              {rooms?.map((room: Room) => (
+              {rooms?.map((room) => (
                 <RoomCard
                   room_id={room.room_id}
                   start_date={formData.start_date.toISOString().slice(0, 10)}
@@ -280,7 +218,7 @@ const ReservationPage = () => {
                   services={room.services}
                   capacity={room.capacity}
                   bedNumber={room.bedNumber}
-                  status={room.status}
+                  status={true}
                   id={room.id}
                 />
               ))}

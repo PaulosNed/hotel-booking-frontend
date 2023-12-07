@@ -5,7 +5,7 @@ export default function RoomsLayoout({
 }) {
   const bgImageUrl = "/images/home/backgroundHotel.jpg";
   return (
-    <div className="flex flex-col space-y-28 pb-10">
+    <div className="flex flex-col space-y-16 md:space-y-28 pb-10">
       <div className="w-full h-[120px] md:h-[200px] relative">
         <div
           className="absolute inset-0"

@@ -1,6 +1,5 @@
 "use client";
 
-
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
@@ -41,27 +40,29 @@ const Page = () => {
     // prevArrow: <PrevArrow />,
   };
 
-//   const router = useRouter()
-  const { id, room_id, start_date, end_date } = useParams()
+  //   const router = useRouter()
+  const { id, room_id, start_date, end_date } = useParams();
   const { data: room, isLoading, isError, error } = useGetSingleRoomQuery(id);
 
-  const services = room?.services?.split(" ")
-  const photos: string[] = [room?.image as string, room?.image as string, room?.image as string]
+  const services = room?.services?.split(" ");
+  const photos: string[] = [
+    room?.image as string,
+    "https://www.usatoday.com/gcdn/-mm-/05b227ad5b8ad4e9dcb53af4f31d7fbdb7fa901b/c=0-64-2119-1259/local/-/media/USATODAY/USATODAY/2014/08/13/1407953244000-177513283.jpg",
+    "https://nypost.com/wp-content/uploads/sites/2/2022/02/Hotel-feature.jpg?quality=75&strip=all",
+  ];
 
   return (
     <div className="md:w-8/12 mx-auto px-10 md:pb-20">
       <div className="flex flex-col space-y-10 md:space-y-16">
-        <div className="w-full relative">
+        <div className="w-full">
           <Slider {...settings}>
-            {photos?.map((image: string) => (
-              <div key={image} className="relative">
-                <div className="slider-content">
-                  <Image
+            {photos?.map((image: string, i: number) => (
+              <div key={i} className="relative">
+                <div className="w-full">
+                  <img
                     src={image}
                     alt="Slide"
-                    className="rounded-xl h-[500px] w-full mx-auto"
-                    width={400}
-                    height={100}
+                    className="rounded-xl w-full h-[200px] md:h-[500px] object-cover mx-auto"
                   />
                   <div className="absolute bottom-0 left-0 w-full z-40 transition-all duration-300">
                     <div className="flex flex-col w-full h-full justify-end py-4 px-8 gap-4">
@@ -103,7 +104,10 @@ const Page = () => {
             ))}
           </div>
         </div>
-        <Link href={`/reserve/${room_id}/${start_date}/${end_date}`} className="self-center btn text-white w-fit">
+        <Link
+          href={`/reserve/${room_id}/${start_date}/${end_date}`}
+          className="self-center btn text-white w-fit"
+        >
           Book Now for ${room?.price.toString()}
         </Link>
       </div>
