@@ -1,44 +1,22 @@
+/* eslint-disable @next/next/no-img-element */
 "use client";
 
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 
-import Slider from "react-slick";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
 import { useGetSingleRoomQuery } from "@/store/rooms/roomsApi";
 import { useParams } from "next/navigation";
 
-// interface ArrowProps {
-//   onClick: () => void;
-// }
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Navigation, Pagination } from "swiper/modules";
 
-// const NextArrow: React.FC<ArrowProps> = ({ onClick }) => (
-//   <button onClick={onClick} className="next-arrow">
-//     Next
-//   </button>
-// );
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
 
-// const PrevArrow: React.FC<ArrowProps> = ({ onClick }) => (
-//   <button onClick={onClick} className="prev-arrow">
-//     Previous
-//   </button>
-// );
 
 const Page = () => {
-  const settings = {
-    dots: true,
-    infinite: true,
-    speed: 500,
-    slidesToShow: 1,
-    slidesToScroll: 1,
-    autoplay: true,
-    autoplaySpeed: 3000,
-    // nextArrow: <NextArrow />,
-    // prevArrow: <PrevArrow />,
-  };
-
   const { id } = useParams();
   const { data: room } = useGetSingleRoomQuery(id);
 
@@ -53,7 +31,34 @@ const Page = () => {
     <div className="w-full md:w-8/12 mx-auto px-3 md:px-10 md:pb-20">
       <div className="flex flex-col space-y-10 md:space-y-16">
         <div className="w-full">
-          <Slider {...settings}>
+          <Swiper
+            navigation
+            // pagination={{ type: "fraction" }}
+            modules={[Navigation, Pagination]}
+            // onSwiper={(swiper) => console.log(swiper)}
+            className="relative"
+          >
+            {photos?.map((image: string, i: number) => (
+              <SwiperSlide key={i}>
+                <div className="w-full">
+                  <img
+                    src={image}
+                    alt="Slide"
+                    className="rounded-xl w-full h-[200px] md:h-[500px] object-cover mx-auto"
+                  />
+                </div>
+                <div className="absolute bottom-0 left-0 w-full z-40 transition-all duration-300">
+                  <div className="flex flex-col w-full h-full justify-end py-2 md:py-4 px-4 md:px-8 gap-4">
+                    <h1 className="text-xl md:text-3xl text-white font-semibold">
+                      {room?.name}
+                    </h1>
+                  </div>
+                </div>
+              </SwiperSlide>
+            ))}
+          </Swiper>
+
+          {/* <Slider {...settings}>
             {photos?.map((image: string, i: number) => (
               <div key={image} className="relative">
                 <div className="w-full">
@@ -72,7 +77,7 @@ const Page = () => {
                 </div>
               </div>
             ))}
-          </Slider>
+          </Slider> */}
         </div>
 
         <div className="flex flex-col items-center space-y-6 md:space-y-10">
@@ -96,7 +101,9 @@ const Page = () => {
                 height={4}
                 className="w-4 h-4 object-cover"
               />
-              <p className="text-sm text-slate-500">{room?.capacity.toString()} Passangers</p>
+              <p className="text-sm text-slate-500">
+                {room?.capacity.toString()} Passangers
+              </p>
             </div>
             <div className="flex space-x-2">
               <Image
@@ -106,7 +113,9 @@ const Page = () => {
                 height={4}
                 className="w-4 h-4 object-cover"
               />
-              <p className="text-sm text-slate-500">{room?.bedNumber.toString()} Bedrooms</p>
+              <p className="text-sm text-slate-500">
+                {room?.bedNumber.toString()} Bedrooms
+              </p>
             </div>
             {services?.map((tag: string) => (
               <div key={tag} className="flex space-x-2">
