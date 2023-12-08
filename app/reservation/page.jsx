@@ -5,15 +5,12 @@ import { useState } from "react";
 import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 import Select from "react-select";
 
-
 import { useGetAvialableRoomsQuery } from "@/store/availability/availabilityApi";
-import { useGetAllRoomsQuery } from "@/store/rooms/roomsApi";
-import { Room } from "@/models/Room";
 import RoomCard from "@/components/rooms/RoomCard";
 
 const ReservationPage = () => {
   const bgImageUrl = "/images/home/backgroundHotel.jpg";
-  const enviroment = `http://127.0.0.1:8000/media/`
+  const enviroment = `http://127.0.0.1:8000/media/`;
   const [formData, setFormData] = useState({
     start_date: new Date(),
     end_date: new Date(new Date().setDate(new Date().getDate() + 1)),
@@ -21,42 +18,37 @@ const ReservationPage = () => {
   });
 
   const capacityOptions = [
-    { value: 1, label: "One" },
-    { value: 2, label: "Two" },
-    { value: 3, label: "Three" },
-    { value: 4, label: "Four" },
-    { value: 5, label: "Five" },
+    { value: "1", label: "1" },
+    { value: "2", label: "2" },
+    { value: "3", label: "3" },
+    { value: "4", label: "4" },
+    { value: "5", label: "5" },
   ];
   const customStyles = {
     control: (provided, state) => ({
       ...provided,
       minHeight: "3.5rem", // Adjust the height as needed
-      width: "280px", // Adjust the right padding as needed
     }),
   };
 
   // const { data, isLoading, isError, error } = useGetAllRoomsQuery();
-  // console.log(data, `${formData.start_date}`)
+  // console.log(`end date, ${formData.end_Date}`)
   const request = {
-    start_date: formData.start_date.toISOString().slice(0, 10), 
-    end_date: formData.end_date.toISOString().slice(0, 10), 
-    capacity: formData.capacity.value
-  }
-  
-  const { data, refetch } = useGetAvialableRoomsQuery(
-    request,
-    {
-      queryKey: ['getAvialableRooms', request], // Specify queryKey with the parameters
-    }
-  );
-  
-  const [rooms, setRooms] = useState([])
-  
+    start_date: formData.start_date.toISOString().slice(0, 10),
+    end_date: formData.end_date.toISOString().slice(0, 10),
+    capacity: formData.capacity.value,
+  };
+
+  const { data, refetch } = useGetAvialableRoomsQuery(request, {
+    queryKey: ["getAvialableRooms", request], // Specify queryKey with the parameters
+  });
+
+  const [rooms, setRooms] = useState([]);
+
   useEffect(() => {
-    console.log("data", data)
+    console.log("data", data);
     if (data) {
-      
-      let visited = new Set()
+      let visited = new Set();
       const currRooms = data?.map((sub) => {
         const currRoom = {
           room_id: sub.id,
@@ -68,41 +60,38 @@ const ReservationPage = () => {
           capacity: sub.type[0].fields.capacity,
           bedNumber: sub.type[0].fields.bedNumber,
           status: sub.type[0].fields.status,
-          price: sub.type[0].fields.price
-        }
-    
+          price: sub.type[0].fields.price,
+        };
+
         if (!visited.has(currRoom.id)) {
-          visited.add(currRoom.id)
-          return currRoom
+          visited.add(currRoom.id);
+          return currRoom;
         }
-      })
-      const mapRooms = currRooms.filter((room) => room != undefined)
-      console.log("currRooms", mapRooms)
-      setRooms(mapRooms)
+      });
+      const mapRooms = currRooms.filter((room) => room != undefined);
+      console.log("currRooms", mapRooms);
+      setRooms(mapRooms);
     }
-  }, [data, enviroment])
-  
-  
+  }, [data, enviroment]);
+
   // console.log("rooms", rooms)
-  
-  
-  
-  const handleClick = async(e) => {
+
+  const handleClick = async (e) => {
     const newRequest = {
-      start_date: formData.start_date.toISOString().slice(0, 10), 
-      end_date: formData.end_date.toISOString().slice(0, 10), 
-      capacity: formData.capacity.value
-    }
+      start_date: formData.start_date.toISOString().slice(0, 10),
+      end_date: formData.end_date.toISOString().slice(0, 10),
+      capacity: formData.capacity.value,
+    };
 
     try {
       // Use refetch with the new parameters by updating the queryKey
-      console.log("in try", newRequest)
-      const newData = await refetch(['getAvialableRooms', newRequest]);
-      console.log("success", newData)
+      console.log("in try", newRequest);
+      const newData = await refetch(["getAvialableRooms", newRequest]);
+      console.log("success", newData);
+      console.log(data);
     } catch (error) {
-      console.error('Error refetching data:', error);
+      console.error("Error refetching data:", error);
     }
-    
   };
 
   return (
@@ -121,7 +110,7 @@ const ReservationPage = () => {
           <p className="mt-2 text-2xl md:text-5xl uppercase">Reservation</p>
         </div>
         <div className="relative bottom-0 mt-10 md:-mt-14 md:h-28 w-9/12 mx-auto md:shadow-xl bg-white z-10 rounded-lg">
-          <div className="px-4 md:px-10 flex flex-col md:flex-row gap-8 md:gap-0 md:justify-between items-center pt-6">
+          <div className="px-4 md:px-10 flex flex-col md:flex-row gap-8 md:gap-4 md:justify-between items-center pt-6">
             {/* <DateRange
               minDate={addDays(new Date(), 0)}
               editableDateInputs={true}
@@ -134,12 +123,13 @@ const ReservationPage = () => {
               label="Start Date"
               className="w-full md:w-fit"
               value={formData.start_date}
-              onChange={(newValue) =>
+              minDate={new Date()}
+              onChange={(newValue) => {
                 setFormData((prev) => ({
                   ...prev,
                   start_date: newValue,
-                }))
-              }
+                }));
+              }}
               format="yyyy-MM-dd"
               slotProps={{
                 textField: {
@@ -151,12 +141,17 @@ const ReservationPage = () => {
               label="End Date"
               className="w-full md:w-fit"
               value={formData.end_date}
-              onChange={(newValue) =>
-                setFormData((prev) => ({
-                  ...prev,
-                  end_date: newValue,
-                }))
+              minDate={
+                new Date(new Date().setDate(formData.start_date.getDate() + 1))
               }
+              onChange={(newValue) => {
+                {
+                  setFormData((prev) => ({
+                    ...prev,
+                    end_date: newValue,
+                  }));
+                }
+              }}
               format="yyyy-MM-dd"
               slotProps={{
                 textField: {
@@ -164,12 +159,12 @@ const ReservationPage = () => {
                 },
               }}
             />
-            <div className="self-start mb-0.5 flex flex-col">
+            <div className="self-start flex-1 w-full md:w-fit flex flex-col">
               <Select
                 placeholder="Capacity..."
                 styles={customStyles}
                 classNamePrefix="Capacity"
-                defaultValue={1}
+                defaultValue={{ value: "1", label: "1" }}
                 onChange={(newValue) => {
                   setFormData((prev) => ({
                     ...prev,
@@ -180,10 +175,14 @@ const ReservationPage = () => {
                 id="capacity"
                 name="capacity"
                 options={capacityOptions}
+                className="w-full"
               />
-              {/* <label htmlFor="capacity" className="ml-4 text-sm text-gray-500 font-sans">
+              <label
+                htmlFor="capacity"
+                className="ml-4 text-sm text-gray-500 font-sans"
+              >
                 Capacity
-              </label> */}
+              </label>
             </div>
             <button
               onClick={handleClick}
@@ -195,35 +194,34 @@ const ReservationPage = () => {
         </div>
       </div>
 
-      
       <div className="mt-[550px] mb-32 md:my-32 md:w-10/12 mx-auto bg-white px-10">
-            {/* <div className="flex space-x-2 items-center group">
+        {/* <div className="flex space-x-2 items-center group">
               <div className="w-3 h-3 bg-primary rounded-full group-hover:animate-ping"></div>
               <h1 className="text-xl font-montserrat">
                 Please Fill the fields and search for Avialable Rooms
               </h1>
             </div> */}
 
-            <div className="flex flex-col space-y-10">
-              {rooms?.map((room) => (
-                <RoomCard
-                  room_id={room.room_id}
-                  start_date={formData.start_date.toISOString().slice(0, 10)}
-                  end_date={formData.end_date.toISOString().slice(0, 10)}
-                  price={room.price}
-                  key={room.id.toString()}
-                  name={room.name}
-                  image={room.image}
-                  description={room.description}
-                  services={room.services}
-                  capacity={room.capacity}
-                  bedNumber={room.bedNumber}
-                  status={true}
-                  id={room.id}
-                />
-              ))}
-            </div>
-          </div>
+        <div className="flex flex-col space-y-10">
+          {rooms?.map((room) => (
+            <RoomCard
+              room_id={room.room_id}
+              start_date={formData.start_date.toISOString().slice(0, 10)}
+              end_date={formData.end_date.toISOString().slice(0, 10)}
+              price={room.price}
+              key={room.id.toString()}
+              name={room.name}
+              image={room.image}
+              description={room.description}
+              services={room.services}
+              capacity={room.capacity}
+              bedNumber={room.bedNumber}
+              status={true}
+              id={room.id}
+            />
+          ))}
+        </div>
+      </div>
     </div>
   );
 };
