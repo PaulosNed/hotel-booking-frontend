@@ -93,8 +93,8 @@ const RoomCard: React.FC<Room> = (room) => {
             className="h-52 rounded-t-lg object-cover"
           />
           <div className="mt-4 flex flex-col space-y-4 px-4">
-            <h1 className="font-montserrat font-bold text-3xl">{room.name}</h1>
-            <p className="text-slate-500 font-sm font-montserrat">
+            <h1 className="font-montserrat font-extrabold md:font-bold text-xl md:text-3xl">{room.name}</h1>
+            <p className="text-slate-500 text-sm font-montserrat">
               {room.description.slice(0, 100)}....
             </p>
             <div className="py-4 flex gap-2 flex-wrap">
@@ -114,8 +114,8 @@ const RoomCard: React.FC<Room> = (room) => {
               ))}
             </div>
           </div>
-          <div className="max-w-sm flex flex-col justify-between items-end py-10 px-4">
-            <div className="btn text-white hover:scale-100">
+          <div className="max-w-sm flex flex-col justify-between items-end py-4 md:py-10 px-4">
+            <div className="bg-primary rounded-full text-xs md:btn py-2 px-4 text-white md:hover:scale-100">
               Price: ${room.price.toString()}
             </div>
           </div>

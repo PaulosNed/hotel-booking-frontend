@@ -1,3 +1,4 @@
+import Link from "next/link";
 import React from "react";
 
 const HomePage = () => {
@@ -22,7 +23,7 @@ const HomePage = () => {
             <span className="text-primary">Enjoy</span> Life
           </h1>
         </div>
-        <button className="btn">Book Now</button>
+        <Link className="btn" href={'/reservation'}>Book Now</Link>
       </div>
     </div>
   );

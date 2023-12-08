@@ -3,17 +3,18 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import React from "react";
+import React, { useState } from "react";
 
 import { useGetSingleRoomQuery } from "@/store/rooms/roomsApi";
 import { useParams } from "next/navigation";
 
-import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation, Pagination } from "swiper/modules";
+import { Swiper, SwiperSlide } from 'swiper/react'
+import { FreeMode, Navigation, Thumbs } from 'swiper/modules'
 
-import "swiper/css";
-import "swiper/css/navigation";
-import "swiper/css/pagination";
+import 'swiper/css'
+import 'swiper/css/free-mode'
+import 'swiper/css/navigation'
+import 'swiper/css/thumbs'
 
 
 const Page = () => {
@@ -21,24 +22,32 @@ const Page = () => {
   const { data: room } = useGetSingleRoomQuery(id);
 
   const services = room?.services?.split(" ");
-  const photos: string[] = [
-    room?.image as string,
+  const photos = [
+    room?.image,
     "https://www.usatoday.com/gcdn/-mm-/05b227ad5b8ad4e9dcb53af4f31d7fbdb7fa901b/c=0-64-2119-1259/local/-/media/USATODAY/USATODAY/2014/08/13/1407953244000-177513283.jpg",
     "https://nypost.com/wp-content/uploads/sites/2/2022/02/Hotel-feature.jpg?quality=75&strip=all",
+    "https://nypost.com/wp-content/uploads/sites/2/2022/02/Hotel-feature.jpg?quality=75&strip=all",
+    "https://nypost.com/wp-content/uploads/sites/2/2022/02/Hotel-feature.jpg?quality=75&strip=all",
+    "https://nypost.com/wp-content/uploads/sites/2/2022/02/Hotel-feature.jpg?quality=75&strip=all",
   ];
+
+  const [thumbsSwiper, setThumbsSwiper] = useState(null)
 
   return (
     <div className="w-full md:w-8/12 mx-auto px-3 md:px-10 md:pb-20">
       <div className="flex flex-col space-y-10 md:space-y-16">
         <div className="w-full">
           <Swiper
-            navigation
-            // pagination={{ type: "fraction" }}
-            modules={[Navigation, Pagination]}
-            // onSwiper={(swiper) => console.log(swiper)}
-            className="relative"
+            loop={true}
+            spaceBetween={10}
+            navigation={true}
+            thumbs={{
+              swiper:
+                thumbsSwiper && !thumbsSwiper.destroyed ? thumbsSwiper : null
+            }}
+            modules={[FreeMode, Navigation, Thumbs]}
           >
-            {photos?.map((image: string, i: number) => (
+            {photos?.map((image, i) => (
               <SwiperSlide key={i}>
                 <div className="w-full">
                   <img
@@ -58,26 +67,30 @@ const Page = () => {
             ))}
           </Swiper>
 
-          {/* <Slider {...settings}>
-            {photos?.map((image: string, i: number) => (
-              <div key={image} className="relative">
-                <div className="w-full">
-                  <img
-                    src={image}
-                    alt="Slide"
-                    className="rounded-xl w-full h-[200px] md:h-[500px] object-cover mx-auto"
-                  />
-                  <div className="absolute bottom-0 left-0 w-full z-40 transition-all duration-300">
-                    <div className="flex flex-col w-full h-full justify-end py-4 px-8 gap-4">
-                      <h1 className="text-3xl text-white font-semibold">
-                        {room?.name}
-                      </h1>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </Slider> */}
+          {/* Thumbnail */}
+        <Swiper
+          onSwiper={setThumbsSwiper}
+          loop={true}
+          spaceBetween={12}
+          slidesPerView={6}
+          freeMode={true}
+          watchSlidesProgress={true}
+          modules={[FreeMode, Navigation, Thumbs]}
+          className='thumbs mt-3 h-10 md:h-24 w-full rounded-lg'
+        >
+          {photos.map((image, index) => (
+            <SwiperSlide key={index}>
+              <button className='flex h-full w-full items-center justify-center'>
+                <img
+                  src={image}
+                  alt="thumbnail"
+                  className='block h-full w-full object-cover'
+                />
+              </button>
+            </SwiperSlide>
+          ))}
+        </Swiper>
+
         </div>
 
         <div className="flex flex-col items-center space-y-6 md:space-y-10">
@@ -117,7 +130,7 @@ const Page = () => {
                 {room?.bedNumber.toString()} Bedrooms
               </p>
             </div>
-            {services?.map((tag: string) => (
+            {services?.map((tag) => (
               <div key={tag} className="flex space-x-2">
                 <Image
                   src={"/images/rooms/green-check.svg"}
