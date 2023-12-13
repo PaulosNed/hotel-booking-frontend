@@ -8,6 +8,10 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      animation: {
+        bounce200: 'bounce 2s infinite 200ms',
+        bounce400: 'bounce 2s infinite 400ms',
+      },
       colors: {
         'primary':'#3468DF',
         'secondary': '#E5F7FF',

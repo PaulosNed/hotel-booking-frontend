@@ -1,6 +1,19 @@
+"use client"
+
+import { ThreeDots } from  'react-loader-spinner'
+
 export default function Loading() {
-    // You can add any UI inside Loading, including a Skeleton.
-    return <p className="h-screen flex justify-center items-center text-4xl">
-    Loading...
-  </p>
-  }
+  return (
+    <div className="flex justify-center items-center min-h-screen min-w-screen">
+      <ThreeDots
+        height="80"
+        width="80"
+        radius="9"
+        color="#3468DF"
+        ariaLabel="three-dots-loading"
+        wrapperStyle={{}}
+        visible={true}
+      />
+    </div>
+  );
+}

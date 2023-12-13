@@ -14,7 +14,7 @@ const ReservationPage = () => {
   const [formData, setFormData] = useState({
     start_date: new Date(),
     end_date: new Date(new Date().setDate(new Date().getDate() + 1)),
-    capacity: { value: 1, label: "One" },
+    capacity: { value: "1", label: "1" },
   });
 
   const capacityOptions = [
@@ -133,7 +133,7 @@ const ReservationPage = () => {
               format="yyyy-MM-dd"
               slotProps={{
                 textField: {
-                  helperText: "MM/DD/YYYY",
+                  helperText: "YYYY-MM-DD",
                 },
               }}
             />
@@ -155,7 +155,7 @@ const ReservationPage = () => {
               format="yyyy-MM-dd"
               slotProps={{
                 textField: {
-                  helperText: "MM/DD/YYYY",
+                  helperText: "YYYY-MM-DD",
                 },
               }}
             />
