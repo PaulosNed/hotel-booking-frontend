@@ -51,11 +51,15 @@ const Page = () => {
 
     console.log(request);
     const response: any = await bookRoom(request);
-    console.log("respone", response.data.data.checkout_url)
+    console.log("respone", response.data)
 
     if (response.data.status == "success") {
-      console.log("in", response.data.data.checkout_url)
+      console.log("in", response.data.data)
+      sessionStorage.setItem('tx_ref', response.data.tx_ref)
+      // console.log("Ref", sessionStorage.getItem('tx_ref'))
       window.location.href = response.data.data.checkout_url;
+    } else {
+      
     }
   };
 

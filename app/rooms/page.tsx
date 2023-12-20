@@ -15,7 +15,12 @@ const RoomsPage = () => {
           price={room.price}
           key={room.id.toString()}
           name={room.name}
-          image={room.image}
+          image1={room.image1}
+          image2={room.image2}
+          image3={room.image3}
+          image4={room.image4}
+          image5={room.image5}
+          image6={room.image6}
           description={room.description}
           services={room.services}
           capacity={room.capacity}

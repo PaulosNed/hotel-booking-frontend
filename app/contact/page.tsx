@@ -50,7 +50,7 @@ const Page: React.FC = () => {
         <iframe
           className="w-full md:rounded-xl"
           title="address"
-          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3940.9081050442514!2d38.75518557472648!3d8.980603391078771!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x164b85542dc201d7%3A0xef0ddd925c3c1f91!2sSilicon%20Valley%20College!5e0!3m2!1sen!2set!4v1682103070604!5m2!1sen!2set"
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3940.0683193036753!2d38.735814174557056!3d9.057533088542609!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x164b8f222bdae539%3A0x7ffe63d2ada9ecdd!2sNahusenay%20Hotel!5e0!3m2!1sen!2set!4v1702889099093!5m2!1sen!2set"
           width="600"
           height="450"
           style={{ border: 0 }}
@@ -60,7 +60,9 @@ const Page: React.FC = () => {
         ></iframe>
 
         <div className="w-full mx-auto py-10">
-          <p className="text-4xl md:text-6xl font-inter mb-10 font-bold">Contact Us</p>
+          <p className="text-4xl md:text-6xl font-inter mb-10 font-bold">
+            Contact Us
+          </p>
           <div className="mt-16">
             <form
               target="_blank"

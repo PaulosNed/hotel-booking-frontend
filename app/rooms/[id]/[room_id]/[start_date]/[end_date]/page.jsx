@@ -22,12 +22,13 @@ const Page = () => {
 
   const services = room?.services?.split(" ");
   const photos = [
-    room?.image,
-    "https://www.usatoday.com/gcdn/-mm-/05b227ad5b8ad4e9dcb53af4f31d7fbdb7fa901b/c=0-64-2119-1259/local/-/media/USATODAY/USATODAY/2014/08/13/1407953244000-177513283.jpg",
-    "https://nypost.com/wp-content/uploads/sites/2/2022/02/Hotel-feature.jpg?quality=75&strip=all",
-    "https://nypost.com/wp-content/uploads/sites/2/2022/02/Hotel-feature.jpg?quality=75&strip=all",
-    "https://nypost.com/wp-content/uploads/sites/2/2022/02/Hotel-feature.jpg?quality=75&strip=all",
-    "https://nypost.com/wp-content/uploads/sites/2/2022/02/Hotel-feature.jpg?quality=75&strip=all",
+    room?.image1,
+    room?.image2,
+    room?.image3,
+    room?.image4,
+    room?.image5,
+    room?.image5,
+    // room?.image6,
   ];
 
   const [thumbsSwiper, setThumbsSwiper] = useState(null);
@@ -144,7 +145,7 @@ const Page = () => {
         </div>
         <Link
           href={`/reserve/${room_id}/${start_date}/${end_date}`}
-          className="self-center btn text-white w-fit"
+          className="self-center text-white bg-primary px-8 py-3 rounded-full outline outline-2 outline-primary hover:bg-white hover:text-primary hover:shadow-inner transition ease-out duration-200 w-fit"
         >
           Book Now for ${room?.price.toString()}
         </Link>

@@ -2,6 +2,7 @@ import { configureStore, getDefaultMiddleware } from '@reduxjs/toolkit'
 import { roomsApi } from './rooms/roomsApi'
 import { reserveApi } from './reserve/reserveApi'
 import { availabilityApi } from './availability/availabilityApi'
+import { confirmApi } from './confirm/confirmApi'
 
 
 export const store = configureStore({
@@ -9,9 +10,10 @@ export const store = configureStore({
     [roomsApi.reducerPath]: roomsApi.reducer,
     [reserveApi.reducerPath]: reserveApi.reducer,
     [availabilityApi.reducerPath]: availabilityApi.reducer,
+    [confirmApi.reducerPath]: confirmApi.reducer,
   },
 
-  middleware: getDefaultMiddleware => getDefaultMiddleware().concat(roomsApi.middleware, reserveApi.middleware, availabilityApi.middleware)
+  middleware: getDefaultMiddleware => getDefaultMiddleware().concat(roomsApi.middleware, reserveApi.middleware, availabilityApi.middleware, confirmApi.middleware)
 })
 
 export type RootState = ReturnType<typeof store.getState>

@@ -24,7 +24,7 @@ const RoomCard: React.FC<Room> = (room) => {
         <div className="flex justify-between">
           <div className="flex space-x-8">
             <img
-              src={room.image}
+              src={room.image1}
               alt={"room"}
               className="w-80 h-56 object-cover"
             />
@@ -88,7 +88,7 @@ const RoomCard: React.FC<Room> = (room) => {
       >
         <div className="flex flex-col">
           <img
-            src={room.image}
+            src={room.image1}
             alt={"room"}
             className="h-52 rounded-t-lg object-cover"
           />

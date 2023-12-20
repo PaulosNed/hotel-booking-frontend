@@ -54,7 +54,12 @@ const ReservationPage = () => {
           room_id: sub.id,
           id: sub.type[0].pk,
           name: sub.type[0].fields.name,
-          image: enviroment + sub.type[0].fields.image,
+          image1: enviroment + sub.type[0].fields.image1,
+          image2: enviroment + sub.type[0].fields.image2,
+          image3: enviroment + sub.type[0].fields.image3,
+          image4: enviroment + sub.type[0].fields.image4,
+          image5: enviroment + sub.type[0].fields.image5,
+          image6: enviroment + sub.type[0].fields.image6,
           description: sub.type[0].fields.description,
           services: sub.type[0].fields.services,
           capacity: sub.type[0].fields.capacity,
@@ -186,7 +191,7 @@ const ReservationPage = () => {
             </div>
             <button
               onClick={handleClick}
-              className="md:self-start btn text-white font-montserrat font-normal hover:scale-100 hover:bg-blue-800"
+              className="md:self-start text-white bg-primary px-8 py-4 rounded-lg hover:bg-blue-900 hover:shadow-inner transition ease-out duration-200"
             >
               Check Avialability
             </button>
@@ -211,7 +216,12 @@ const ReservationPage = () => {
               price={room.price}
               key={room.id.toString()}
               name={room.name}
-              image={room.image}
+              image1={room.image1}
+              image2={room.image2}
+              image3={room.image3}
+              image4={room.image4}
+              image5={room.image5}
+              image6={room.image6}
               description={room.description}
               services={room.services}
               capacity={room.capacity}
