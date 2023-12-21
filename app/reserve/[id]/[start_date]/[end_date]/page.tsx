@@ -69,7 +69,7 @@ const Page = () => {
         className="flex flex-col space-y-2 md:space-y-5"
         onSubmit={handleSubmit(reserveRoom)}
       >
-        <h1 className="pt-2 pb-10 text-3xl font-bold font-montserrat mx-auto uppercase text-primary">Reserve Your room</h1>
+        <h1 className="pt-2 pb-10 text-xl md:text-3xl font-bold font-montserrat mx-auto uppercase text-primary text-center">Reserve Your room</h1>
         <div className="w-full flex flex-col md:flex-row">
           <div className="md:w-1/3 px-2">
             <label htmlFor="first_name" className="text-xs font-semibold px-1">

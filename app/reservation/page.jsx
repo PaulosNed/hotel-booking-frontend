@@ -7,6 +7,7 @@ import Select from "react-select";
 
 import { useGetAvialableRoomsQuery } from "@/store/availability/availabilityApi";
 import RoomCard from "@/components/rooms/RoomCard";
+import Loading from "../loading";
 
 const ReservationPage = () => {
   const bgImageUrl = "/images/home/backgroundHotel.jpg";
@@ -39,7 +40,7 @@ const ReservationPage = () => {
     capacity: formData.capacity.value,
   };
 
-  const { data, refetch } = useGetAvialableRoomsQuery(request, {
+  const { data, isLoading, refetch } = useGetAvialableRoomsQuery(request, {
     queryKey: ["getAvialableRooms", request], // Specify queryKey with the parameters
   });
 
@@ -98,6 +99,10 @@ const ReservationPage = () => {
       console.error("Error refetching data:", error);
     }
   };
+
+  if (isLoading) {
+    return <Loading />
+  }
 
   return (
     <div className="flex flex-col">
@@ -206,8 +211,8 @@ const ReservationPage = () => {
                 Please Fill the fields and search for Avialable Rooms
               </h1>
             </div> */}
-
-        <div className="flex flex-col space-y-10">
+        {rooms.length == 0 && <h1 className="text-xl md:text-4xl font-montserrat font-bold my-5 text-center">No Room Available</h1>}
+        {rooms.length > 0 && <div className="flex flex-col space-y-10">
           {rooms?.map((room) => (
             <RoomCard
               room_id={room.room_id}
@@ -230,7 +235,7 @@ const ReservationPage = () => {
               id={room.id}
             />
           ))}
-        </div>
+        </div>}
       </div>
     </div>
   );

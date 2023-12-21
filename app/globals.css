@@ -21,6 +21,9 @@
   font-family: 'IM Fell French Canon';
 }
 
+nextjs-portal {
+  display: none;
+}
 
 .btn-blue {
   @apply bg-blue-first rounded-lg border text-white
