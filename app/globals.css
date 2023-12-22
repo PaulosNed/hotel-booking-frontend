@@ -41,7 +41,7 @@ nextjs-portal {
 }
 
 .btn-light {
-  @apply py-2 px-6 rounded-full text-xs transition-all transform hover:scale-105 duration-500
+  @apply py-2 px-10 rounded-full text-xs transition-all transform hover:scale-105 duration-500
 }
 
 .blog-tag {

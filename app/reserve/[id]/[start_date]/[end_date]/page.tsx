@@ -181,7 +181,7 @@ const Page = () => {
             </label>
             <div className="flex">
               <input
-                type="text"
+                type="number"
                 id="phone_number"
                 className="w-full p-2 rounded-lg border-2 border-gray-200 outline-none focus:border-primary"
                 required={true}

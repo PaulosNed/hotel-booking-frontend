@@ -3,6 +3,8 @@ import { roomsApi } from './rooms/roomsApi'
 import { reserveApi } from './reserve/reserveApi'
 import { availabilityApi } from './availability/availabilityApi'
 import { confirmApi } from './confirm/confirmApi'
+import { contactApi } from './contact/contactApi'
+import { blogApi } from './blog/blogApi'
 
 
 export const store = configureStore({
@@ -11,9 +13,11 @@ export const store = configureStore({
     [reserveApi.reducerPath]: reserveApi.reducer,
     [availabilityApi.reducerPath]: availabilityApi.reducer,
     [confirmApi.reducerPath]: confirmApi.reducer,
+    [contactApi.reducerPath]: contactApi.reducer,
+    [blogApi.reducerPath]: blogApi.reducer,
   },
 
-  middleware: getDefaultMiddleware => getDefaultMiddleware().concat(roomsApi.middleware, reserveApi.middleware, availabilityApi.middleware, confirmApi.middleware)
+  middleware: getDefaultMiddleware => getDefaultMiddleware().concat(roomsApi.middleware, reserveApi.middleware, availabilityApi.middleware, confirmApi.middleware, contactApi.middleware, blogApi.middleware)
 })
 
 export type RootState = ReturnType<typeof store.getState>

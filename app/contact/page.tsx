@@ -1,7 +1,10 @@
 "use client";
 
+import { useContactMutation } from "@/store/contact/contactApi";
 import React from "react";
 import { useForm } from "react-hook-form";
+import Loading from "../loading";
+import { toast } from "react-toastify";
 
 interface FormData {
   name: string;
@@ -12,20 +15,40 @@ interface FormData {
 const Page: React.FC = () => {
   const bgImageUrl = "/images/home/backgroundHotel.jpg";
 
+  const [
+    contact,
+    {
+      data,
+      isError,
+      isLoading,
+      isSuccess,
+    },
+  ] = useContactMutation();
+
   const {
     register,
-    trigger,
+    handleSubmit,
     formState: { errors, isValid },
     reset,
   } = useForm<FormData>();
 
-  const onSubmit = async (e: any) => {
-    console.log("~ e", e);
-    const isValidTrigger = await trigger();
-    if (!isValidTrigger) {
-      e.preventDefault();
+  const onSubmit = async (data: any) => {
+    data.date = new Date().toISOString().slice(0, 10)
+    console.log(data)
+    const response: any = await contact(data)
+
+    if (response.data !== null) {
+      console.log("success", response)
+      toast.success("Message sent successfully")
+      reset()
+    } else {
+      toast.error("Unable to send message")
     }
   };
+
+  if (isLoading) {
+    return <Loading />
+  }
 
   return (
     <div className="flex flex-col space-y-28 pb-10">
@@ -66,7 +89,7 @@ const Page: React.FC = () => {
           <div className="mt-16">
             <form
               target="_blank"
-              onSubmit={onSubmit}
+              onSubmit={handleSubmit(onSubmit)}
               action="https://formsubmit.co/pauldessie@gmail.com"
               method="POST"
               className="flex flex-col gap-5 md:w-10/12"

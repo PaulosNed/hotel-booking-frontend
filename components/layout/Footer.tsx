@@ -32,19 +32,21 @@ const Footer = () => {
         </div>
         <div>
           <h3 className="text-gray-800 font-semibold mt-6 text-xl md:mt-2 mb-3">
-            Our teams
+            Navigation
           </h3>
           <ul>
-            <li className="mb-2">Donate</li>
-            <li className="mb-2">Get involved</li>
-            <li className="mb-2">About us</li>
+            <li className="mb-2"><Link href={'/'} className="hover:text-primary">Home</Link></li>
+            <li className="mb-2"><Link href={'/about'} className="hover:text-primary">About us</Link></li>
+            <li className="mb-2"><Link href={'/rooms'} className="hover:text-primary">Our Rooms</Link></li>
+            <li className="mb-2"><Link href={'/reservation'} className="hover:text-primary">Reservation</Link></li>
+            <li className="mb-2"><Link href={'/blogs'} className="hover:text-primary">Blogs</Link></li>
           </ul>
         </div>
         <div>
           <h3 className="text-gray-800 font-semibold mt-6 text-xl md:mt-2 mb-3">
             Get in touch
           </h3>
-          <p className="mb-2">Questions or feedback?</p>
+          <Link href={'/contact'} className="mb-2 hover:text-primary">Questions or feedback?</Link>
           <p className="mb-4 md:mb-20">we would like to hear from you</p>
           <section className="flex justify-between md:justify-start md:gap-6">
             <Link href={"#"}>
