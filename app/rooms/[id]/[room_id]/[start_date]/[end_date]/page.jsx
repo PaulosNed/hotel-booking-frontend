@@ -33,6 +33,25 @@ const Page = () => {
 
   const [thumbsSwiper, setThumbsSwiper] = useState(null);
 
+  const getDaysDifference = (startDateString, endDateString) => {
+    const startDate = new Date(startDateString);
+    const endDate = new Date(endDateString);
+
+    // Set hours, minutes, seconds, and milliseconds to 0 for both dates
+    startDate.setHours(0, 0, 0, 0);
+    endDate.setHours(0, 0, 0, 0);
+
+    // Calculate the difference in milliseconds
+    const differenceInMs = endDate.getTime() - startDate.getTime();
+
+    // Convert milliseconds to days (1 day = 24 hours * 60 minutes * 60 seconds * 1000 milliseconds)
+    const differenceInDays = Math.floor(differenceInMs / (1000 * 60 * 60 * 24));
+
+    return Math.abs(differenceInDays); // Return absolute value to handle negative differences
+  };
+
+  const days = getDaysDifference(start_date, end_date);
+
   return (
     <div className="w-full md:w-8/12 mx-auto px-3 md:px-10 md:pb-20">
       <div className="flex flex-col space-y-10 md:space-y-16">
@@ -147,7 +166,7 @@ const Page = () => {
           href={`/reserve/${room_id}/${start_date}/${end_date}`}
           className="self-center text-white bg-primary px-8 py-3 rounded-full outline outline-2 outline-primary hover:bg-white hover:text-primary hover:shadow-inner transition ease-out duration-200 w-fit"
         >
-          Book Now for ${room?.price.toString()}
+          Book Now for ${(room?.price * days).toString()}
         </Link>
       </div>
     </div>
