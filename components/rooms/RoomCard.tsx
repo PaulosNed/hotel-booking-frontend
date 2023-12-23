@@ -20,7 +20,11 @@ const RoomCard: React.FC<Room> = (room) => {
       ? `${room?.description.substring(0, 200)}...`
       : room?.description;
 
-  const services = room.services.split(" ");
+  const services: string[] = room.services.split(" ");
+
+  const checkTag = (tag: string) => {
+    return services.includes(tag.toLowerCase())
+  }
 
   return (
     <>
@@ -45,42 +49,42 @@ const RoomCard: React.FC<Room> = (room) => {
               </p>
 
               <div className="w-full flex justify-between mt-8 px-4">
-                <FontAwesomeIcon
+                {checkTag('wifi') && <FontAwesomeIcon
                   icon={faWifi}
                   color="blue"
                   title="wifi"
                   className="hover:cursor-pointer"
-                />
-                <FontAwesomeIcon
+                />}
+                {checkTag('bathroom') && <FontAwesomeIcon
                   icon={faBath}
                   color="blue"
                   title="Bathroom"
                   className="hover:cursor-pointer"
-                />
-                <FontAwesomeIcon
+                />}
+                {checkTag('food') && <FontAwesomeIcon
                   icon={faUtensils}
                   color="blue"
                   title="Food Service"
                   className="hover:cursor-pointer"
-                />
-                <FontAwesomeIcon
+                />}
+                {checkTag('vault') && <FontAwesomeIcon
                   icon={faVault}
                   color="blue"
                   title="Safe Vault"
                   className="hover:cursor-pointer"
-                />
-                <FontAwesomeIcon
+                />}
+                {checkTag('laundry') && <FontAwesomeIcon
                   icon={faSink}
                   color="blue"
                   title="laundry"
                   className="hover:cursor-pointer"
-                />
-                <FontAwesomeIcon
+                />}
+                {checkTag('tv') && <FontAwesomeIcon
                   icon={faTv}
                   color="blue"
                   title="Television"
                   className="hover:cursor-pointer"
-                />
+                />}
               </div>
 
               {/* <div className="flex flex-col space-y-2 text-xs font-semibold">
