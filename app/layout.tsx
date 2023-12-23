@@ -12,6 +12,11 @@ import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
 
 import { ToastContainer, toast } from "react-toastify";
 
+import "@fortawesome/fontawesome-svg-core/styles.css";
+import { config } from "@fortawesome/fontawesome-svg-core";
+config.autoAddCss = false;
+
+
 const inter = Poppins({
   weight: "400",
   subsets: ["latin"],
