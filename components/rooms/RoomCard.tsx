@@ -26,14 +26,14 @@ const RoomCard: React.FC<Room> = (room) => {
     <>
       {/* Desktop View */}
       <div
-        className="hidden md:block shadow-xl h-56 rounded-lg bg-slate-50"
+        className="hidden md:block shadow-xl h-fit rounded-lg bg-slate-50"
       >
         <div className="flex justify-between">
           <div className="flex space-x-8">
             <img
               src={room.image1}
               alt={"room"}
-              className="w-80 h-56 object-cover rounded-l-lg"
+              className="w-80 h-full object-cover rounded-l-lg"
             />
             <div className="flex-auto flex flex-col py-10">
               <h1 className="font-montserrat font-bold text-3xl">
@@ -106,7 +106,7 @@ const RoomCard: React.FC<Room> = (room) => {
                 </p>
               </div> */}
             </div>
-            <div className="w-7/12 flex flex-col justify-center items-center py-10 border-l px-4 space-y-8">
+            <div className="w-[800px] laptop:w-8/12 flex flex-col justify-center items-center py-10 border-l desktop:px-4 space-y-8">
               <div className="flex flex-col justify-center items-center space-y-2">
                 <h1 className="text-xl font-bold font-montserrat">
                   ${room.price.toString()}
@@ -119,7 +119,7 @@ const RoomCard: React.FC<Room> = (room) => {
                     ? `rooms/${room.id}/${room.room_id}/${room.start_date}/${room.end_date}`
                     : `rooms/${room.id}`
                 }
-                className="self-center text-white bg-primary px-8 py-3 rounded-full outline outline-2 outline-primary hover:bg-white hover:text-primary hover:shadow-inner transition ease-out duration-200 w-fit"
+                className="self-center text-white bg-primary px-8 py-3 rounded-full outline outline-2 outline-primary hover:bg-white hover:text-primary hover:shadow-inner transition ease-out duration-200 w-fit text-sm lg:text-base"
               >
                 {room.room_id ? "Book Now" : "View Room"}
               </Link>

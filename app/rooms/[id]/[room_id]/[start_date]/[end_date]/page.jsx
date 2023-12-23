@@ -27,8 +27,8 @@ const Page = () => {
     room?.image3,
     room?.image4,
     room?.image5,
-    room?.image5,
-    // room?.image6,
+    // room?.image5,
+    room?.image6,
   ];
 
   const [thumbsSwiper, setThumbsSwiper] = useState(null);
@@ -157,7 +157,7 @@ const Page = () => {
                   height={4}
                   className="w-4 h-4 object-cover"
                 />
-                <p className="text-sm text-slate-500">{tag}</p>
+                <p className="text-sm text-slate-500">{tag.toLowerCase()}</p>
               </div>
             ))}
           </div>

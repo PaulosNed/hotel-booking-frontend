@@ -50,7 +50,7 @@ const Page = () => {
           </div>
 
           {/* Blogs section */}
-          <div className="md:w-9/12 mx-auto py-10 pt-20">
+          <div className="md:w-10/12 mx-auto py-10 pt-20">
             <div className="w-full flex flex-col space-y-10">
               {filteredBlogs?.length == 0 && (
                 <div className="text-center font-bold text-xl">

@@ -66,7 +66,7 @@ const Page = () => {
         </p>
       </div>
 
-      <div className="mt-10 px-10 md:px-0 md:w-7/12 mx-auto font-light">
+      <div className="mt-10 px-5 md:px-0 md:w-7/12 mx-auto font-light">
         {parse(blog?.body as string)}
       </div>
 

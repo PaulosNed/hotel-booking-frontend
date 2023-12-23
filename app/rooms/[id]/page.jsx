@@ -28,8 +28,8 @@ const Page = () => {
     room?.image3,
     room?.image4,
     room?.image5,
-    room?.image5,
-    // room?.image6,
+    // room?.image5,
+    room?.image6,
   ];
 
   const [thumbsSwiper, setThumbsSwiper] = useState(null)
