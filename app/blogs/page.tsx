@@ -33,7 +33,7 @@ const Page = () => {
       {!isLoading && !isError && (
         <div className="pb-10 font-montserrat">
           {/* Search section and header */}
-          <div className="px-20 flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-96">
+          <div className="md:px-20 flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-96">
             {/* <h1 className="font-semibold text-xl">Blogs</h1> */}
             <div className="w-full flex justify-center">
               <input
@@ -50,7 +50,7 @@ const Page = () => {
           </div>
 
           {/* Blogs section */}
-          <div className="md:w-10/12 mx-auto py-10 pt-20">
+          <div className="md:w-10/12 mx-auto py-10 md:pt-20">
             <div className="w-full flex flex-col space-y-10">
               {filteredBlogs?.length == 0 && (
                 <div className="text-center font-bold text-xl">
