@@ -1,11 +1,72 @@
+"use client";
+
 import Image from "next/image";
 import React from "react";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import AccordionItem from "@/components/about/AccordionItem";
 
 const page = () => {
   const bgImageUrl = "/images/home/backgroundHotel.jpg";
+  const accordionData = [
+    {
+      value: "story",
+      title: "Our story",
+      desc: "Nahusenay international hotel is upscale Three star hotel located in addisu gebya sheger infront of CRRSA, Addis Ababa Ethiopia. This hotel meets the needs and wants of the customer to the higher level with high level hospitality. This modern and trendy star hotel in Addis Ababa is strategically & conveniently in close proximity to the City’s business area. Nahusenay international offers Restaurant and Bar, Spa Centre, Meeting and wedding hall accommodate up to 400 person. It also offers 46 standard guest rooms & suites with stem and Jacquie equipped shower rooms, Bathroom amenities, High speed internet Wi-Fi, and TV and 24-hour room dining services.",
+      image1:
+        "https://images.pexels.com/photos/941864/pexels-photo-941864.jpeg?cs=srgb&dl=pexels-chan-walrus-941864.jpg&fm=jpg",
+      image2:
+        "https://www.foodandwine.com/thmb/8rtGtUmtC0KiJCDxAUXP_cfwgM8=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/GTM-Best-US-Bars-Katana-Kitten-FT-BLOG0423-fa9f2ba9925c47abb4afb0abd25d915a.jpg",
+      image3:
+        "https://t3.ftcdn.net/jpg/03/08/47/58/360_F_308475881_m7o04LTdIbwWWnSJDqjFTjOnWvU0yj8b.jpg",
+    },
+    {
+      value: "bar",
+      title: "BAR & RESTURANT",
+      desc: "Ascending to our rooftop sports bar unveils a breathtaking panorama of the city skyline, offering not only a mesmerizing view but an electrifying experience with live sports entertainment. Positioned atop our building, this space merges the thrill of the game with an unparalleled scenic backdrop, inviting guests to unwind amidst the excitement and grandeur. Meanwhile, our lobby bar, a serene enclave within our establishment, provides a peaceful retreat for those seeking a more tranquil atmosphere. Whether in the dynamic energy of our rooftop or the calm embrace of our lobby, we remain dedicated to pampering our guests with an extensive selection of exceptional beverages, ensuring each visit is an exquisite experience tailored to their preferences.",
+      image2:
+        "https://images.pexels.com/photos/941864/pexels-photo-941864.jpeg?cs=srgb&dl=pexels-chan-walrus-941864.jpg&fm=jpg",
+      image1:
+        "https://www.foodandwine.com/thmb/8rtGtUmtC0KiJCDxAUXP_cfwgM8=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/GTM-Best-US-Bars-Katana-Kitten-FT-BLOG0423-fa9f2ba9925c47abb4afb0abd25d915a.jpg",
+      image3:
+        "https://t3.ftcdn.net/jpg/03/08/47/58/360_F_308475881_m7o04LTdIbwWWnSJDqjFTjOnWvU0yj8b.jpg",
+    },
+    {
+      value: "wellness",
+      title: "WELLNES CENTER",
+      desc: "After a long and demanding day, find rejuvenation and relaxation at Nahusenay Spa. Our commitment lies in tailoring experiences to meet the unique needs of each guest. Through carefully curated programs and a range of services, we aim to provide the pinnacle of relaxation. Whether it's a therapeutic massage, revitalizing treatments, or personalized care, our spa is dedicated to ensuring that every guest leaves feeling refreshed, renewed, and ready to take on the world again. ",
+      image3:
+        "https://images.pexels.com/photos/941864/pexels-photo-941864.jpeg?cs=srgb&dl=pexels-chan-walrus-941864.jpg&fm=jpg",
+      image2:
+        "https://www.foodandwine.com/thmb/8rtGtUmtC0KiJCDxAUXP_cfwgM8=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/GTM-Best-US-Bars-Katana-Kitten-FT-BLOG0423-fa9f2ba9925c47abb4afb0abd25d915a.jpg",
+      image1:
+        "https://t3.ftcdn.net/jpg/03/08/47/58/360_F_308475881_m7o04LTdIbwWWnSJDqjFTjOnWvU0yj8b.jpg",
+    },
+    {
+      value: "meeting",
+      title: "METTING & EVENTS",
+      desc: "When it comes to event planning, having versatile venue options is key. Our selection encompasses spaces tailored to meet a spectrum of needs, be it a corporate affair, a romantic wedding, or any special celebration you have in mind. These venues boast diverse configurations, allowing for flexibility in layout and style to suit your preferences. From elegant ballrooms to charming outdoor spaces, each venue is equipped to comfortably accommodate gatherings of varying sizes, ensuring a seamless experience for both hosts and guests. Whether aiming for an intimate ambiance or a larger-scale celebration, our venues provide the canvas upon which to craft unforgettable moments.",
+      image1:
+        "https://images.pexels.com/photos/941864/pexels-photo-941864.jpeg?cs=srgb&dl=pexels-chan-walrus-941864.jpg&fm=jpg",
+      image2:
+        "https://www.foodandwine.com/thmb/8rtGtUmtC0KiJCDxAUXP_cfwgM8=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/GTM-Best-US-Bars-Katana-Kitten-FT-BLOG0423-fa9f2ba9925c47abb4afb0abd25d915a.jpg",
+      image3:
+        "https://t3.ftcdn.net/jpg/03/08/47/58/360_F_308475881_m7o04LTdIbwWWnSJDqjFTjOnWvU0yj8b.jpg",
+    },
+    {
+      value: "sister",
+      title: "Sister Company",
+      desc: "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Repudiandae sunt velit veniam, recusandae nobis corporis voluptatem placeat quibusdam voluptatibus eum dignissimos in, praesentium repellat odit necessitatibus mollitia blanditiis omnis facilis?",
+      image2:
+        "https://images.pexels.com/photos/941864/pexels-photo-941864.jpeg?cs=srgb&dl=pexels-chan-walrus-941864.jpg&fm=jpg",
+      image1:
+        "https://www.foodandwine.com/thmb/8rtGtUmtC0KiJCDxAUXP_cfwgM8=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/GTM-Best-US-Bars-Katana-Kitten-FT-BLOG0423-fa9f2ba9925c47abb4afb0abd25d915a.jpg",
+      image3:
+        "https://t3.ftcdn.net/jpg/03/08/47/58/360_F_308475881_m7o04LTdIbwWWnSJDqjFTjOnWvU0yj8b.jpg",
+    },
+  ];
 
   return (
-    <div className="flex flex-col space-y-28 pb-28">
+    <div className="flex flex-col space-y-10 pb-28">
       <div className="w-full h-[120px] md:h-[200px] relative">
         <div
           className="absolute inset-0"
@@ -21,44 +82,45 @@ const page = () => {
         </div>
       </div>
 
-      <div className="w-11/12 md:w-1/2 mx-auto">
-        <div className="flex flex-col space-y-16 items-center">
-          <h1 className="font-bold font-montserrat text-4xl">Since 2023</h1>
-          <Image
-            src={"/images/about/Vintage-Decorative-Divider.svg"}
-            alt={"separator"}
-            width={200}
-            height={50}
-          />
-          <div className="text-slate-500">
-            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Recusandae
-            quidem, dignissimos delectus id dicta soluta quis culpa doloribus
-            eligendi unde laboriosam beatae dolorem facilis, libero tempore vero
-            iusto consectetur. Odio. Lorem ipsum dolor, sit amet consectetur
-            adipisicing elit. Necessitatibus in cumque corrupti rerum expedita
-            ex quisquam ducimus optio harum temporibus ullam, porro fuga quasi
-            libero, iste animi, sapiente repellat! Molestiae.
+      <div className="w-11/12 md:w-10/12 mx-auto">
+        <Tabs defaultValue="story" className="w-full">
+          <TabsList className="w-full flex flex-col md:flex-row md:gap-4 md:justify-center h-[180px] md:h-fit bg-secondary">
+            <TabsTrigger value="story" className="capitalize">
+              our story
+            </TabsTrigger>
+            <TabsTrigger value="bar" className="capitalize">
+              Bar & Resturant
+            </TabsTrigger>
+            <TabsTrigger value="wellness" className="capitalize">
+              Wellness center
+            </TabsTrigger>
+            <TabsTrigger value="meeting" className="capitalize">
+              Meeting & Events
+            </TabsTrigger>
+            <TabsTrigger value="sister" className="capitalize">
+              Sister Company
+            </TabsTrigger>
+          </TabsList>
+          <div className="">
+            {accordionData.map((accordion: any) => (
+              <TabsContent value={accordion.value} key={accordion.value}>
+                <AccordionItem
+                  desc={accordion.desc}
+                  image1={accordion.image1}
+                  image2={accordion.image2}
+                  image3={accordion.image3}
+                />
+              </TabsContent>
+            ))}
+            {/* <TabsContent value="story">
+              <AccordionItem desc={""} image1={""} image2={""} image3={""} >
+            </TabsContent>
+            <TabsContent value="bar">Change your password here.</TabsContent>
+            <TabsContent value="wellness">Change your password wellness.</TabsContent>
+            <TabsContent value="meeting">Change password here.</TabsContent>
+            <TabsContent value="sister">Change your here.</TabsContent> */}
           </div>
-          <h1 className="font-bold font-montserrat">Number Facts</h1>
-          <div className="flex justify-between w-3/4">
-            <div className="flex flex-col items-center">
-              <h1 className="text-4xl font-bold ">320</h1>
-              <p className="text-slate-500 text-xs">Clients</p>
-            </div>
-            <div className="flex flex-col items-center">
-              <h1 className="text-4xl font-bold ">24</h1>
-              <p className="text-slate-500 text-xs">Rooms</p>
-            </div>
-            <div className="flex flex-col items-center">
-              <h1 className="text-4xl font-bold ">50</h1>
-              <p className="text-slate-500 text-xs">Staffs</p>
-            </div>
-            <div className="flex flex-col items-center">
-              <h1 className="text-4xl font-bold ">2</h1>
-              <p className="text-slate-500 text-xs">Awards</p>
-            </div>
-          </div>
-        </div>
+        </Tabs>
       </div>
     </div>
   );
