@@ -23,8 +23,8 @@ const HomePage = () => {
               Nahusenay Hotel
             </p>
             <h1 className="text-4xl md:text-6xl font-bold mt-2 px-10">
-              <span className="text-primary">Experience</span> and{" "}
-              <span className="text-primary">Enjoy</span> Life
+              Your <span className="text-primary">Comfart</span> is our{" "}
+              <span className="text-primary">Priority</span>
             </h1>
           </div>
           <Link className="btn" href={"/reservation"}>
@@ -42,26 +42,34 @@ const HomePage = () => {
             height={50}
           />
           <div className="text-slate-500">
-            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Recusandae
-            quidem, dignissimos delectus id dicta soluta quis culpa doloribus
-            eligendi unde laboriosam beatae dolorem facilis, libero tempore vero
-            iusto consectetur. Odio. Lorem ipsum dolor, sit amet consectetur
-            adipisicing elit. Necessitatibus in cumque corrupti rerum expedita
-            ex quisquam ducimus optio harum temporibus ullam, porro fuga quasi
-            libero, iste animi, sapiente repellat! Molestiae.
+            <p>
+              Nahusenay international hotel is upscale Three star hotel located
+              in addisu gebya sheger infront of CRRSA, Addis Ababa Ethiopia.
+              This hotel meets the needs and wants of the customer to the higher
+              level with high level hospitality. This modern and trendy star
+              hotel in Addis Ababa is strategically & conveniently in close
+              proximity to the City’s business area.
+            </p>
+            <p className="mt-8">
+              Nahusenay international offers Restaurant and Bar, Spa Centre,
+              Meeting and wedding hall accommodate up to 400 person. It also
+              offers 46 standard guest rooms & suites with stem and Jacquie
+              equipped shower rooms, Bathroom amenities, High speed internet
+              Wi-Fi, and TV and 24-hour room dining services.
+            </p>
           </div>
           <h1 className="font-bold font-montserrat">Number Facts</h1>
           <div className="flex justify-between w-3/4">
             <div className="flex flex-col items-center">
-              <h1 className="text-4xl font-bold ">320</h1>
+              <h1 className="text-4xl font-bold ">300+</h1>
               <p className="text-slate-500 text-xs">Clients</p>
             </div>
             <div className="flex flex-col items-center">
-              <h1 className="text-4xl font-bold ">24</h1>
+              <h1 className="text-4xl font-bold ">46</h1>
               <p className="text-slate-500 text-xs">Rooms</p>
             </div>
             <div className="flex flex-col items-center">
-              <h1 className="text-4xl font-bold ">50</h1>
+              <h1 className="text-4xl font-bold ">50+</h1>
               <p className="text-slate-500 text-xs">Staffs</p>
             </div>
             <div className="flex flex-col items-center">
