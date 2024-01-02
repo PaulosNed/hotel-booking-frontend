@@ -84,7 +84,7 @@ const page = () => {
 
       <div className="w-11/12 md:w-10/12 mx-auto">
         <Tabs defaultValue="story" className="w-full">
-          <TabsList className="w-full flex flex-col md:flex-row md:gap-4 md:justify-center h-[180px] md:h-fit bg-secondary">
+          <TabsList className="w-full flex flex-col md:flex-row md:gap-4 md:justify-center h-[180px] md:h-fit">
             <TabsTrigger value="story" className="capitalize">
               our story
             </TabsTrigger>

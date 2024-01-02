@@ -8,7 +8,7 @@ import Loading from "../loading";
 
 const Page: React.FC = () => {
   const bgImageUrl = "/images/home/backgroundHotel.jpg";
-  const ref = sessionStorage.getItem("tx_ref");
+  const ref = typeof window !== 'undefined' ? sessionStorage.getItem("tx_ref") : null;
   const { data, isLoading, isError, error } = useGetconfirmationQuery(ref);
   let status: any = { fields: { payment_status: "Failed" } };
   if (data) {

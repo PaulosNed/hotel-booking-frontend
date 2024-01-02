@@ -45,6 +45,7 @@ const ReservationPage = () => {
   });
 
   const [rooms, setRooms] = useState([]);
+  const [loading, setLoading] = useState(false)
 
   useEffect(() => {
     console.log("data", data);
@@ -83,6 +84,7 @@ const ReservationPage = () => {
   // console.log("rooms", rooms)
 
   const handleClick = async (e) => {
+    setLoading(true)
     const newRequest = {
       start_date: formData.start_date.toISOString().slice(0, 10),
       end_date: formData.end_date.toISOString().slice(0, 10),
@@ -98,6 +100,7 @@ const ReservationPage = () => {
     } catch (error) {
       console.error("Error refetching data:", error);
     }
+    setTimeout(() => {setLoading(false)}, 1000)
   };
 
   if (isLoading) {
@@ -211,8 +214,9 @@ const ReservationPage = () => {
                 Please Fill the fields and search for Avialable Rooms
               </h1>
             </div> */}
-        {rooms.length == 0 && <h1 className="text-xl md:text-4xl font-montserrat font-bold my-5 text-center">No Room Available</h1>}
-        {rooms.length > 0 && <div className="flex flex-col space-y-10">
+        {loading && <h1 className="text-xl md:text-4xl font-montserrat font-bold my-5 text-center">Loading...</h1>}
+        {!loading && rooms.length == 0 && <h1 className="text-xl md:text-4xl font-montserrat font-bold my-5 text-center">No Room Available</h1>}
+        {!loading && rooms.length > 0 && <div className="flex flex-col space-y-10">
           {rooms?.map((room) => (
             <RoomCard
               room_id={room.room_id}
