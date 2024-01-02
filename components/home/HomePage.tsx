@@ -19,10 +19,10 @@ const HomePage = () => {
         <div className="absolute inset-0 bg-black opacity-50"></div>
         <div className="relative h-full flex flex-col space-y-16 justify-center items-center text-center text-white font-montserrat z-10">
           <div>
-            <p className="mt-2 text-2xl md:text-5xl uppercase">
+            <p className="mt-2 text-3xl md:text-5xl uppercase">
               Nahusenay Hotel
             </p>
-            <h1 className="text-4xl md:text-6xl font-bold mt-2 px-10">
+            <h1 className="text-4xl md:text-6xl font-bold mt-4 md:mt-2 px-10">
               Your <span className="text-primary">Comfart</span> is our{" "}
               <span className="text-primary">Priority</span>
             </h1>
@@ -35,7 +35,7 @@ const HomePage = () => {
       <div className="my-24 w-11/12 md:w-1/2 mx-auto">
         <div className="flex flex-col space-y-16 items-center">
           <h1 className="font-bold font-montserrat text-4xl">Since 2023</h1>
-          <Image
+          <img
             src={"/images/about/Vintage-Decorative-Divider.svg"}
             alt={"separator"}
             width={200}
@@ -59,21 +59,21 @@ const HomePage = () => {
             </p>
           </div>
           <h1 className="font-bold font-montserrat">Number Facts</h1>
-          <div className="flex justify-between w-3/4">
+          <div className="flex md:justify-between md:w-3/4 flex-wrap gap-8">
             <div className="flex flex-col items-center">
-              <h1 className="text-4xl font-bold ">300+</h1>
+              <h1 className="text-2xl md:text-4xl font-bold ">300+</h1>
               <p className="text-slate-500 text-xs">Clients</p>
             </div>
             <div className="flex flex-col items-center">
-              <h1 className="text-4xl font-bold ">46</h1>
+              <h1 className="text-2xl md:text-4xl font-bold ">46</h1>
               <p className="text-slate-500 text-xs">Rooms</p>
             </div>
             <div className="flex flex-col items-center">
-              <h1 className="text-4xl font-bold ">50+</h1>
+              <h1 className="text-2xl md:text-4xl font-bold ">50+</h1>
               <p className="text-slate-500 text-xs">Staffs</p>
             </div>
             <div className="flex flex-col items-center">
-              <h1 className="text-4xl font-bold ">2</h1>
+              <h1 className="text-2xl md:text-4xl font-bold ">2</h1>
               <p className="text-slate-500 text-xs">Awards</p>
             </div>
           </div>

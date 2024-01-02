@@ -1,12 +1,11 @@
 import Link from "next/link";
-import Image from "next/image";
 
 const Footer = () => {
   return (
     <footer className="font-poppins bg-secondary text-sm px-10 py-4 md:pt-10 md:px-28">
       <div className="text-gray-400 flex justify-around flex-col md:flex-row text-center md:text-left w-full items-center md:items-start">
         <div className="flex flex-col items-center md:items-start md:mt-3">
-          <Image
+          <img
             className="mb-4 md:mb-20 w-40"
             src="/images/logo.jpg"
             alt="a2sv logo"
@@ -50,16 +49,16 @@ const Footer = () => {
           <p className="mb-4 md:mb-20">we would like to hear from you</p>
           <section className="flex justify-between md:justify-start md:gap-6">
             <Link href={"#"}>
-              <Image src="/images/social-icons/facebook.png" alt="facebook" width={28} height={28}/>
+              <img src="/images/social-icons/facebook.png" alt="facebook" width={28} height={28}/>
             </Link>
             <Link href={"#"}>
-              <Image src="/images/social-icons/linkedin.png" alt="linkedin" width={28} height={28}/>
+              <img src="/images/social-icons/linkedin.png" alt="linkedin" width={28} height={28}/>
             </Link>
             <Link href={"#"}>
-              <Image src="/images/social-icons/instagram.png" alt="instagram" width={28} height={28}/>
+              <img src="/images/social-icons/instagram.png" alt="instagram" width={28} height={28}/>
             </Link>
             <Link href={"#"}>
-              <Image src="/images/social-icons/twitter.png" alt="twitter" width={28} height={28}/>
+              <img src="/images/social-icons/twitter.png" alt="twitter" width={28} height={28}/>
             </Link>
           </section>
         </div>

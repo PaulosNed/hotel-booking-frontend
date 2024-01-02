@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import React, { useState } from "react";
 import A2SVLogo from "../../public/images/A2SV.svg";
 import { LinkItems } from "./LinkItems";
@@ -47,7 +46,7 @@ export const NavBar = () => {
       <div className="hidden md:flex justify-between items-center font-montserrat">
         {/* logo section */}
         <div>
-          <Image src="/images/logo.jpg" alt="logo" width={120} height={50} />
+          <img src="/images/logo.jpg" alt="logo" width={120} height={50} />
         </div>
 
         {/* Navigation section */}
@@ -68,12 +67,12 @@ export const NavBar = () => {
       <div className="flex md:hidden justify-between font-montserrat">
         {/* logo section */}
         <div>
-          <Image src="/images/logo.jpg" alt="logo" width={120} height={50} />
+          <img src="/images/logo.jpg" alt="logo" width={120} height={50} />
         </div>
 
         <div className="flex flex-col items-end relative">
           <button onClick={() => setIsMenuToggled(!isMenuToggled)}>
-            <Image src={"/images/burger.svg"} alt="" width={40} height={40} />
+            <img src={"/images/burger.svg"} alt="" width={40} height={40} />
           </button>
 
           {/* Navigation section */}
