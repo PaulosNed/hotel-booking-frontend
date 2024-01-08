@@ -11,7 +11,7 @@ import Loading from "../loading";
 
 const ReservationPage = () => {
   const bgImageUrl = "/images/home/backgroundHotel.jpg";
-  const enviroment = process.env.NEXT_PUBLIC_ENDPOINT || "http://127.0.0.1:8000" + `/media/`;
+  const enviroment = process.env.NEXT_PUBLIC_ENDPOINT || "http://127.0.0.1:8000";
   const [formData, setFormData] = useState({
     start_date: new Date(),
     end_date: new Date(new Date().setDate(new Date().getDate() + 1)),
@@ -56,12 +56,12 @@ const ReservationPage = () => {
           room_id: sub.id,
           id: sub.type[0].pk,
           name: sub.type[0].fields.name,
-          image1: enviroment + sub.type[0].fields.image1,
-          image2: enviroment + sub.type[0].fields.image2,
-          image3: enviroment + sub.type[0].fields.image3,
-          image4: enviroment + sub.type[0].fields.image4,
-          image5: enviroment + sub.type[0].fields.image5,
-          image6: enviroment + sub.type[0].fields.image6,
+          image1: enviroment + "/media/" + sub.type[0].fields.image1,
+          image2: enviroment + "/media/" + sub.type[0].fields.image2,
+          image3: enviroment + "/media/" + sub.type[0].fields.image3,
+          image4: enviroment + "/media/" + sub.type[0].fields.image4,
+          image5: enviroment + "/media/" + sub.type[0].fields.image5,
+          image6: enviroment + "/media/" + sub.type[0].fields.image6,
           description: sub.type[0].fields.description,
           services: sub.type[0].fields.services,
           capacity: sub.type[0].fields.capacity,
