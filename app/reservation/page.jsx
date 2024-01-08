@@ -11,7 +11,7 @@ import Loading from "../loading";
 
 const ReservationPage = () => {
   const bgImageUrl = "/images/home/backgroundHotel.jpg";
-  const enviroment = `http://127.0.0.1:8000/media/`;
+  const enviroment = process.env.NEXT_PUBLIC_ENDPOINT || "http://127.0.0.1:8000" + '/media';
   const [formData, setFormData] = useState({
     start_date: new Date(),
     end_date: new Date(new Date().setDate(new Date().getDate() + 1)),
