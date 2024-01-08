@@ -42,7 +42,7 @@ const Page = () => {
         <p>6 min Read</p> */}
       </div>
       <img
-        src={blog ? blog.image : "./images/blogs/coder.svg"}
+        src={blog ? blog.image.substring(0, 39) + '/backend' + blog.image.substring(39) : "./images/blogs/coder.svg"}
         alt={"Blog's Main image"}
         className="md:w-2/3 mt-10 md:mt-16 md:mb-12 mx-auto h-[400px] md:rounded-xl object-cover"
       />

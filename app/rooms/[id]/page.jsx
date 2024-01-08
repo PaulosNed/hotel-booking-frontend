@@ -23,13 +23,12 @@ const Page = () => {
 
   const services = room?.services?.split(" ");
   const photos = [
-    room?.image1,
-    room?.image2,
-    room?.image3,
-    room?.image4,
-    room?.image5,
-    // room?.image5,
-    room?.image6,
+    room?.image1.substring(0, 39) + '/backend' + room?.image1.substring(39),
+    room?.image2.substring(0, 39) + '/backend' + room?.image2.substring(39),
+    room?.image3.substring(0, 39) + '/backend' + room?.image3.substring(39),
+    room?.image4.substring(0, 39) + '/backend' + room?.image4.substring(39),
+    room?.image5.substring(0, 39) + '/backend' + room?.image5.substring(39),
+    room?.image6.substring(0, 39) + '/backend' + room?.image6.substring(39),
   ];
 
   const [thumbsSwiper, setThumbsSwiper] = useState(null)

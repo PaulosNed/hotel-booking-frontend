@@ -7,7 +7,7 @@ const HomePage = () => {
 
   return (
     <>
-      <div className="w-full h-screen relative">
+      <div className="w-full py-20 pt-44 md:pt-0 md:py-0 md:h-screen relative">
         <div
           className="absolute inset-0"
           style={{
@@ -17,7 +17,7 @@ const HomePage = () => {
           }}
         ></div>
         <div className="absolute inset-0 bg-black opacity-50"></div>
-        <div className="relative h-full flex flex-col space-y-16 justify-center items-center text-center text-white font-montserrat z-10">
+        <div className="relative h-full flex flex-col space-y-24 md:space-y-16 justify-center items-center text-center text-white font-montserrat z-10">
           <div>
             <p className="mt-2 text-3xl md:text-5xl uppercase">
               Nahusenay Hotel
@@ -32,8 +32,8 @@ const HomePage = () => {
           </Link>
         </div>
       </div>
-      <div className="my-24 w-11/12 md:w-1/2 mx-auto">
-        <div className="flex flex-col space-y-16 items-center">
+      <div className="my-16 md:my-24 w-11/12 md:w-1/2 mx-auto">
+        <div className="flex flex-col space-y-10 md:space-y-16 items-center">
           <h1 className="font-bold font-montserrat text-4xl">Since 2023</h1>
           <img
             src={"/images/about/Vintage-Decorative-Divider.svg"}

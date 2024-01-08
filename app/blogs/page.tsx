@@ -61,7 +61,7 @@ const Page = () => {
                 <BlogItem
                   key={blog.id}
                   id={blog.id}
-                  image={blog.image}
+                  image={blog.image.substring(0, 39) + '/backend' + blog.image.substring(39)}
                   title={blog.title}
                   body={blog.body}
                   date={blog.date}

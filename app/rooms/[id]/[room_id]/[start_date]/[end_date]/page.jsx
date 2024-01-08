@@ -22,13 +22,12 @@ const Page = () => {
 
   const services = room?.services?.split(" ");
   const photos = [
-    room?.image1,
-    room?.image2,
-    room?.image3,
-    room?.image4,
-    room?.image5,
-    // room?.image5,
-    room?.image6,
+    room?.image1.substring(0, 39) + '/backend' + room?.image1.substring(39),
+    room?.image2.substring(0, 39) + '/backend' + room?.image2.substring(39),
+    room?.image3.substring(0, 39) + '/backend' + room?.image3.substring(39),
+    room?.image4.substring(0, 39) + '/backend' + room?.image4.substring(39),
+    room?.image5.substring(0, 39) + '/backend' + room?.image5.substring(39),
+    room?.image6.substring(0, 39) + '/backend' + room?.image6.substring(39),
   ];
 
   const [thumbsSwiper, setThumbsSwiper] = useState(null);
@@ -166,7 +165,7 @@ const Page = () => {
           href={`/reserve/${room_id}/${start_date}/${end_date}`}
           className="self-center text-white bg-primary px-8 py-3 rounded-full outline outline-2 outline-primary hover:bg-white hover:text-primary hover:shadow-inner transition ease-out duration-200 w-fit"
         >
-          Book Now for ${(room?.price * days).toString()}
+          Book Now for {(room?.price * days).toString()} ETB
         </Link>
       </div>
     </div>
