@@ -45,7 +45,7 @@ const ReservationPage = () => {
   });
 
   const [rooms, setRooms] = useState([]);
-  const [loading, setLoading] = useState(false)
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     console.log("data", data);
@@ -84,7 +84,7 @@ const ReservationPage = () => {
   // console.log("rooms", rooms)
 
   const handleClick = async (e) => {
-    setLoading(true)
+    setLoading(true);
     const newRequest = {
       start_date: formData.start_date.toISOString().slice(0, 10),
       end_date: formData.end_date.toISOString().slice(0, 10),
@@ -100,11 +100,13 @@ const ReservationPage = () => {
     } catch (error) {
       console.error("Error refetching data:", error);
     }
-    setTimeout(() => {setLoading(false)}, 1000)
+    setTimeout(() => {
+      setLoading(false);
+    }, 1000);
   };
 
   if (isLoading) {
-    return <Loading />
+    return <Loading />;
   }
 
   return (
@@ -214,32 +216,66 @@ const ReservationPage = () => {
                 Please Fill the fields and search for Avialable Rooms
               </h1>
             </div> */}
-        {loading && <h1 className="text-xl md:text-4xl font-montserrat font-bold my-5 text-center">Loading...</h1>}
-        {!loading && rooms.length == 0 && <h1 className="text-xl md:text-4xl font-montserrat font-bold my-5 text-center">No Room Available</h1>}
-        {!loading && rooms.length > 0 && <div className="flex flex-col space-y-10">
-          {rooms?.map((room) => (
-            <RoomCard
-              room_id={room.room_id}
-              start_date={formData.start_date.toISOString().slice(0, 10)}
-              end_date={formData.end_date.toISOString().slice(0, 10)}
-              price={room.price}
-              key={room.id.toString()}
-              name={room.name}
-              image1={room.image1}
-              image2={room.image2}
-              image3={room.image3}
-              image4={room.image4}
-              image5={room.image5}
-              image6={room.image6}
-              description={room.description}
-              services={room.services}
-              capacity={room.capacity}
-              bedNumber={room.bedNumber}
-              status={true}
-              id={room.id}
-            />
-          ))}
-        </div>}
+        {loading && (
+          <h1 className="text-xl md:text-4xl font-montserrat font-bold my-5 text-center">
+            Loading...
+          </h1>
+        )}
+        {!loading && rooms.length == 0 && (
+          <h1 className="text-xl md:text-4xl font-montserrat font-bold my-5 text-center">
+            No Room Available
+          </h1>
+        )}
+        {!loading && rooms.length > 0 && (
+          <div className="flex flex-col space-y-10">
+            {rooms?.map((room) => (
+              <RoomCard
+                room_id={room.room_id}
+                start_date={formData.start_date.toISOString().slice(0, 10)}
+                end_date={formData.end_date.toISOString().slice(0, 10)}
+                price={room.price}
+                key={room.id.toString()}
+                name={room.name}
+                image1={
+                  room.image1.substring(0, 39) +
+                  "/backend" +
+                  room.image1.substring(39)
+                }
+                image2={
+                  room.image2.substring(0, 39) +
+                  "/backend" +
+                  room.image2.substring(39)
+                }
+                image3={
+                  room.image3.substring(0, 39) +
+                  "/backend" +
+                  room.image3.substring(39)
+                }
+                image4={
+                  room.image4.substring(0, 39) +
+                  "/backend" +
+                  room.image4.substring(39)
+                }
+                image5={
+                  room.image5.substring(0, 39) +
+                  "/backend" +
+                  room.image5.substring(39)
+                }
+                image6={
+                  room.image6.substring(0, 39) +
+                  "/backend" +
+                  room.image6.substring(39)
+                }
+                description={room.description}
+                services={room.services}
+                capacity={room.capacity}
+                bedNumber={room.bedNumber}
+                status={true}
+                id={room.id}
+              />
+            ))}
+          </div>
+        )}
       </div>
     </div>
   );
