@@ -77,7 +77,7 @@ export const NavBar = () => {
 
           {/* Navigation section */}
           {isMenuToggled && (
-            <div className="flex flex-col w-36 items-center space-y-1 absolute top-10 right-0 bg-blue-100 shadow-lg">
+            <div className="flex flex-col w-44 py-5 items-center space-y-1 absolute top-10 right-0 bg-blue-100 shadow-lg">
               {navItems.map((nav: NavItems) => (
                 <div key={nav.name} onClick={() => setIsMenuToggled(false)}>
                   <LinkItems name={nav.name} link={nav.link} />

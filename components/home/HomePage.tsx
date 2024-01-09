@@ -22,7 +22,7 @@ const HomePage = () => {
             <p className="mt-2 text-3xl md:text-5xl uppercase">
               Nahusenay Hotel
             </p>
-            <h1 className="text-4xl md:text-6xl font-bold mt-4 md:mt-2 px-10">
+            <h1 className="text-4xl md:text-6xl font-bold mt-8 md:mt-2 px-10">
               Your <span className="text-primary">Comfort</span> is our{" "}
               <span className="text-primary">Priority</span>
             </h1>
