@@ -37,7 +37,7 @@ export const NavBar = () => {
     {
       link: "/contact",
       name: "Contact Us",
-    }
+    },
   ];
 
   return (
@@ -79,7 +79,9 @@ export const NavBar = () => {
           {isMenuToggled && (
             <div className="flex flex-col w-36 items-center space-y-1 absolute top-10 right-0 bg-blue-100 shadow-lg">
               {navItems.map((nav: NavItems) => (
-                <LinkItems key={nav.name} name={nav.name} link={nav.link} />
+                <div key={nav.name} onClick={() => setIsMenuToggled(false)}>
+                  <LinkItems name={nav.name} link={nav.link} />
+                </div>
               ))}
               {/* <button className="btn">Login</button>
               <button className="btn">Donate</button> */}
