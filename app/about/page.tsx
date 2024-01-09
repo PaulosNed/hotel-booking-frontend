@@ -55,7 +55,7 @@ const page = () => {
     {
       value: "sister",
       title: "Sister Company",
-      desc: "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Repudiandae sunt velit veniam, recusandae nobis corporis voluptatem placeat quibusdam voluptatibus eum dignissimos in, praesentium repellat odit necessitatibus mollitia blanditiis omnis facilis?",
+      desc: "Nahusenay Zeyet Fabrica is our first and currently sister company. Lorem, ipsum dolor sit amet consectetur adipisicing elit. Repudiandae sunt velit veniam, recusandae nobis corporis voluptatem placeat quibusdam voluptatibus eum dignissimos in, praesentium repellat odit necessitatibus mollitia blanditiis omnis facilis?",
       image2:
         "https://images.pexels.com/photos/941864/pexels-photo-941864.jpeg?cs=srgb&dl=pexels-chan-walrus-941864.jpg&fm=jpg",
       image1:
