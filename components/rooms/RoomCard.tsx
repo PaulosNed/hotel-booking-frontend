@@ -171,42 +171,42 @@ const RoomCard: React.FC<Room> = (room) => {
               {room.description.slice(0, 100)}....
             </p>
             <div className="mt-8 flex justify-between p-4 border-t border-b">
-              <FontAwesomeIcon
+              {checkTag('wifi') && <FontAwesomeIcon
                 icon={faWifi}
                 color="blue"
                 title="wifi"
                 className="hover:cursor-pointer"
-              />
-              <FontAwesomeIcon
+              />}
+              {checkTag('bathroom') && <FontAwesomeIcon
                 icon={faBath}
                 color="blue"
                 title="Bathroom"
                 className="hover:cursor-pointer"
-              />
-              <FontAwesomeIcon
+              />}
+              {checkTag('food') && <FontAwesomeIcon
                 icon={faUtensils}
                 color="blue"
                 title="Food Service"
                 className="hover:cursor-pointer"
-              />
-              <FontAwesomeIcon
+              />}
+              {checkTag('vault') && <FontAwesomeIcon
                 icon={faVault}
                 color="blue"
                 title="Safe Vault"
                 className="hover:cursor-pointer"
-              />
-              <FontAwesomeIcon
+              />}
+              {checkTag('laundry') && <FontAwesomeIcon
                 icon={faSink}
                 color="blue"
                 title="laundry"
                 className="hover:cursor-pointer"
-              />
-              <FontAwesomeIcon
+              />}
+              {checkTag('tv') && <FontAwesomeIcon
                 icon={faTv}
                 color="blue"
                 title="Television"
                 className="hover:cursor-pointer"
-              />
+              />}
               {/* <p className="w-fit rounded-full px-3 py-1 text-xs bg-secondary">
                 {room.capacity.toString()} Passangers
               </p>
