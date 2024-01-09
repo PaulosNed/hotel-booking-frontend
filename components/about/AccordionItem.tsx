@@ -24,7 +24,7 @@ const AccordionItem: React.FC<AccordionData> = ({
   return (
     <div className="bg-white">
       <div className="pt-10">
-        <div className="w-full h-60 md:h-[500px] grid grid-cols-5 grid-rows-4 gap-1">
+        <div className="w-full h-[200px] md:h-[500px] grid grid-cols-5 grid-rows-4 gap-1">
           <img
             src={image1}
             alt=""

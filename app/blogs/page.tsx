@@ -11,6 +11,7 @@ const Page = () => {
   const { data: blogs, isLoading, isError, error } = useGetBlogsQuery();
   const [searchQuery, setSearchQuery] = useState<string>("");
   const [filteredBlogs, setFilteredBlogs] = useState<Blog[] | undefined>([]);
+  console.log("Error from code", error, isError)
 
   useEffect(() => {
     const newFilteredBlogs: Blog[] | undefined = blogs?.filter((blog) =>
@@ -18,6 +19,7 @@ const Page = () => {
     );
     setFilteredBlogs(newFilteredBlogs);
   }, [searchQuery, blogs]);
+
 
   if (isLoading) {
     return <Loading />
@@ -27,7 +29,7 @@ const Page = () => {
     <div className="md:w-10/12 mx-auto">
       {isError && (
         <div className="text-center font-bold text-xl">
-          {(error as Error).message}
+          {(error as any).error}
         </div>
       )}
       {!isLoading && !isError && (
