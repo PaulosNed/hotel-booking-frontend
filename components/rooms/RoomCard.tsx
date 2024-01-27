@@ -113,7 +113,7 @@ const RoomCard: React.FC<Room> = (room) => {
             <div className="w-[800px] laptop:w-8/12 flex flex-col justify-center items-center py-10 border-l desktop:px-4 space-y-8">
               <div className="flex flex-col justify-center items-center space-y-2">
                 <h1 className="text-xl font-bold font-montserrat">
-                  {room.price.toString()} ETB
+                  ${room.price.toString()}.00
                 </h1>
                 <p className="uppercase font-light">per night</p>
               </div>
@@ -225,7 +225,7 @@ const RoomCard: React.FC<Room> = (room) => {
           </div>
           <div className="max-w-sm flex flex-col justify-between items-end py-4 md:py-10 px-4">
             <div className="bg-primary rounded-full text-xs md:btn py-2 px-4 text-white md:hover:scale-100">
-              Price: {room.price.toString()} ETB
+              Price: ${room.price.toString()}.00
             </div>
           </div>
         </div>

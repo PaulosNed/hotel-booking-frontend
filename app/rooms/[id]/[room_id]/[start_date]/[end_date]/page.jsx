@@ -165,7 +165,7 @@ const Page = () => {
           href={`/reserve/${room_id}/${start_date}/${end_date}`}
           className="self-center text-white bg-primary px-8 py-3 rounded-full outline outline-2 outline-primary hover:bg-white hover:text-primary hover:shadow-inner transition ease-out duration-200 w-fit"
         >
-          Book Now for {(room?.price * days).toString()} ETB
+          Book Now for ${(room?.price * days).toString()}.00
         </Link>
       </div>
     </div>
