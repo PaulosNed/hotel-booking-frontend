@@ -35,6 +35,7 @@ export default function RootLayout({
         <html lang="en">
           <head>
             <title>Nahusenay Hotel</title>
+            <meta name="google-site-verification" content="_4otHB7Gq6ybQ-TtQhIv__Em9NNHdcY-Ew5uGq-_U1g" />
           </head>
           <body className={`flex flex-col ${inter.className}`}>
             <header>
