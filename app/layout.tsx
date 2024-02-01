@@ -5,7 +5,7 @@ import "react-date-range/dist/styles.css"; // main css file
 import "react-date-range/dist/theme/default.css"; // theme css file
 import "react-toastify/dist/ReactToastify.css";
 
-import { NextSeo } from 'next-seo';
+import { NextSeo } from "next-seo";
 import { Poppins } from "next/font/google";
 import { NavBar } from "@/components/layout/NavBar";
 import { LocalizationProvider } from "@mui/x-date-pickers";
@@ -35,20 +35,26 @@ export default function RootLayout({
       <StateProvider>
         <html lang="en">
           <head>
+            
+            {/* SEO meta tags */}
             <title>
               Nahusenay International Hotel - Luxury Accommodation in Addis
               Ababa, Ethiopia
             </title>
             <meta
+              name="description"
+              content="Experience luxury at Nahusenay International Hotel. Our Ethiopia-based hotel offers top-notch accommodation, excellent amenities, and a memorable stay. Book now for an unforgettable experience."
+            />
+
+            {/* Google verification */}
+            <meta
               name="google-site-verification"
               content="_4otHB7Gq6ybQ-TtQhIv__Em9NNHdcY-Ew5uGq-_U1g"
             />
-            <meta
-              name="description"
-              content="Experience luxury at Nahusenay International Hotel. Our [location]-based hotel offers top-notch accommodation, excellent amenities, and a memorable stay. Book now for an unforgettable experience."
-            ></meta>
+
+            {/* Open Graph and Twitter meta tags */}
             <NextSeo
-              title="Nahusenay International Hotel - Luxury Accommodation"
+              title="Nahusenay International Hotel - Luxury Accommodation in Addis Ababa, Ethiopia"
               description="Welcome to Nahusenay International Hotel, where luxury meets comfort. Book your stay for a memorable experience."
               openGraph={{
                 type: "website",
@@ -64,7 +70,7 @@ export default function RootLayout({
                 },
                 {
                   name: "description",
-                  content: "Luxury Accommodation in [City, Country]",
+                  content: "Luxury Accommodation in Addis Ababa, Ethiopia",
                 },
                 {
                   name: "itemprop",
@@ -74,6 +80,7 @@ export default function RootLayout({
               ]}
             />
           </head>
+
           <body className={`flex flex-col ${inter.className}`}>
             <header>
               <NavBar />
