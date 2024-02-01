@@ -34,7 +34,7 @@ export default function RootLayout({
     <LocalizationProvider dateAdapter={AdapterDateFns}>
       <StateProvider>
         <html lang="en">
-          <Head>
+          <head>
             <title>
               Nahusenay International Hotel - Luxury Accommodation in Addis
               Ababa, Ethiopia
@@ -73,7 +73,7 @@ export default function RootLayout({
                 // Add more Hotel schema properties as needed
               ]}
             />
-          </Head>
+          </head>
           <body className={`flex flex-col ${inter.className}`}>
             <header>
               <NavBar />
