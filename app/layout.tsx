@@ -1,15 +1,8 @@
-"use client";
-
 import "./globals.css";
-import "react-date-range/dist/styles.css"; // main css file
-import "react-date-range/dist/theme/default.css"; // theme css file
 import "react-toastify/dist/ReactToastify.css";
 
-import { NextSeo } from "next-seo";
 import { Poppins } from "next/font/google";
 import { NavBar } from "@/components/layout/NavBar";
-import { LocalizationProvider } from "@mui/x-date-pickers";
-import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
 
 import { ToastContainer, toast } from "react-toastify";
 
@@ -23,7 +16,17 @@ const inter = Poppins({
 });
 import StateProvider from "@/components/provider/StateProvider";
 import Footer from "@/components/layout/Footer";
-import Head from "next/head";
+import { Metadata } from "next";
+
+
+export const metadata: Metadata = {
+  title: "Nahusenay International Hotel - Luxury Accommodation in Addis Ababa, Ethiopia",
+  description: "Experience luxury at Nahusenay International Hotel. Our Ethiopia-based hotel offers top-notch accommodation, excellent amenities, and a memorable stay. Book now for an unforgettable experience.",
+  verification: {
+    google: "_4otHB7Gq6ybQ-TtQhIv__Em9NNHdcY-Ew5uGq-_U1g",
+  }
+}
+
 
 export default function RootLayout({
   children,
@@ -31,56 +34,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <LocalizationProvider dateAdapter={AdapterDateFns}>
       <StateProvider>
         <html lang="en">
-          <head>
-            
-            {/* SEO meta tags */}
-            <title>
-              Nahusenay International Hotel - Luxury Accommodation in Addis
-              Ababa, Ethiopia
-            </title>
-            <meta
-              name="description"
-              content="Experience luxury at Nahusenay International Hotel. Our Ethiopia-based hotel offers top-notch accommodation, excellent amenities, and a memorable stay. Book now for an unforgettable experience."
-            />
-
-            {/* Google verification */}
-            <meta
-              name="google-site-verification"
-              content="_4otHB7Gq6ybQ-TtQhIv__Em9NNHdcY-Ew5uGq-_U1g"
-            />
-
-            {/* Open Graph and Twitter meta tags */}
-            <NextSeo
-              title="Nahusenay International Hotel - Luxury Accommodation in Addis Ababa, Ethiopia"
-              description="Welcome to Nahusenay International Hotel, where luxury meets comfort. Book your stay for a memorable experience."
-              openGraph={{
-                type: "website",
-                locale: "en_US",
-                url: "https://web.nahusenayinternationalhotel.com",
-                site_name: "Nahusenay International Hotel",
-              }}
-              // Include "Hotel" schema markup
-              additionalMetaTags={[
-                {
-                  name: "Hotel Name",
-                  content: "Nahusenay International Hotel",
-                },
-                {
-                  name: "description",
-                  content: "Luxury Accommodation in Addis Ababa, Ethiopia",
-                },
-                {
-                  name: "itemprop",
-                  content: "Hotel",
-                },
-                // Add more Hotel schema properties as needed
-              ]}
-            />
-          </head>
-
           <body className={`flex flex-col ${inter.className}`}>
             <header>
               <NavBar />
@@ -102,6 +57,5 @@ export default function RootLayout({
           </body>
         </html>
       </StateProvider>
-    </LocalizationProvider>
   );
 }
