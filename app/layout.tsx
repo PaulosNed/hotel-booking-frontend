@@ -35,7 +35,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://web.nahusenayinternationalhotel.com/",
+    url: `${process.env.NEXT_PUBLIC_BASE_URL}`,
     siteName: "Nahusenay International Hotel",
     images: [
       {
