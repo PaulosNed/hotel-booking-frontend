@@ -1,3 +1,9 @@
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Rooms"
+}
+
 export default function RoomsLayoout({
   children,
 }: {

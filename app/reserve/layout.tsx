@@ -1,3 +1,10 @@
+import { Metadata } from "next";
+
+
+export const metadata: Metadata = {
+  title: "Reserve Room"
+}
+
 export default function ReservationLayout({
   children,
 }: {

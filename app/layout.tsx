@@ -18,15 +18,21 @@ import StateProvider from "@/components/provider/StateProvider";
 import Footer from "@/components/layout/Footer";
 import { Metadata } from "next";
 
-
 export const metadata: Metadata = {
-  title: "Nahusenay International Hotel - Luxury Accommodation in Addis Ababa, Ethiopia",
-  description: "Experience luxury at Nahusenay International Hotel. Our Ethiopia-based hotel offers top-notch accommodation, excellent amenities, and a memorable stay. Book now for an unforgettable experience.",
+  title: {
+    default: "Nahusenay International Hotel - Luxury Accommodation in Addis Ababa, Ethiopia",
+    template: "%s | Nahusenay International Hotel",
+  },
+  description:
+    "Experience luxury at Nahusenay International Hotel. Our Ethiopia-based hotel offers top-notch accommodation, excellent amenities, and a memorable stay. Book now for an unforgettable experience.",
   verification: {
     google: "_4otHB7Gq6ybQ-TtQhIv__Em9NNHdcY-Ew5uGq-_U1g",
-  }
-}
-
+  },
+  twitter: {
+    card: "summary_large_image",
+    site: "@nahusenayhotel",
+    }
+};
 
 export default function RootLayout({
   children,
@@ -34,28 +40,28 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
+    <html lang="en">
       <StateProvider>
-        <html lang="en">
-          <body className={`flex flex-col ${inter.className}`}>
-            <header>
-              <NavBar />
-            </header>
-            <main className="mt-20 min-h-screen">{children}</main>
-            <ToastContainer
-              position="top-right"
-              autoClose={5000}
-              hideProgressBar={false}
-              newestOnTop={false}
-              closeOnClick
-              rtl={false}
-              pauseOnFocusLoss
-              draggable
-              pauseOnHover
-              theme="colored"
-            />
-            <Footer />
-          </body>
-        </html>
+        <body className={`flex flex-col ${inter.className}`}>
+          <header>
+            <NavBar />
+          </header>
+          <main className="mt-20 min-h-screen">{children}</main>
+          <ToastContainer
+            position="top-right"
+            autoClose={5000}
+            hideProgressBar={false}
+            newestOnTop={false}
+            closeOnClick
+            rtl={false}
+            pauseOnFocusLoss
+            draggable
+            pauseOnHover
+            theme="colored"
+          />
+          <Footer />
+        </body>
       </StateProvider>
+    </html>
   );
 }
