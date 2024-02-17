@@ -26,12 +26,12 @@ const page = () => {
       value: "bar",
       title: "BAR & RESTURANT",
       desc: "Ascending to our rooftop sports bar unveils a breathtaking panorama of the city skyline, offering not only a mesmerizing view but an electrifying experience with live sports entertainment. Positioned atop our building, this space merges the thrill of the game with an unparalleled scenic backdrop, inviting guests to unwind amidst the excitement and grandeur. Meanwhile, our lobby bar, a serene enclave within our establishment, provides a peaceful retreat for those seeking a more tranquil atmosphere. Whether in the dynamic energy of our rooftop or the calm embrace of our lobby, we remain dedicated to pampering our guests with an extensive selection of exceptional beverages, ensuring each visit is an exquisite experience tailored to their preferences.",
-      image1:
-        "/images/about/bar/photo_2024-01-06_13-34-36.jpg",
       image2:
-        "/images/about/bar/photo_2024-01-06_13-58-44.jpg",
+        "/images/about/bar/bar_11.jpg",
+      image1:
+        "/images/about/story/hotel_3rd.jpg",
       image3:
-        "/images/about/bar/photo_2024-01-06_13-58-52.jpg",
+        "/images/about/story/hotel_2nd.jpg",
     },
     {
       value: "wellness",
@@ -48,10 +48,10 @@ const page = () => {
       value: "meeting",
       title: "METTING & EVENTS",
       desc: "When it comes to event planning, having versatile venue options is key. Our selection encompasses spaces tailored to meet a spectrum of needs, be it a corporate affair, a romantic wedding, or any special celebration you have in mind. These venues boast diverse configurations, allowing for flexibility in layout and style to suit your preferences. From elegant ballrooms to charming outdoor spaces, each venue is equipped to comfortably accommodate gatherings of varying sizes, ensuring a seamless experience for both hosts and guests. Whether aiming for an intimate ambiance or a larger-scale celebration, our venues provide the canvas upon which to craft unforgettable moments.",
-      image1:
-      "/images/about/meeting/photo_2024-01-06_14-20-53.jpg",
       image2:
-        "/images/about/bar/photo_2024-01-06_13-34-36.jpg",
+      "/images/about/meeting/photo_2024-01-06_14-20-53.jpg",
+      image1:
+        "/images/about/meeting/meeting_2.jpg",
       image3:
         "/images/about/meeting/photo_2024-01-06_14-22-15.jpg",
     },
