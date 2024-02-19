@@ -41,12 +41,12 @@ export const NavBar = () => {
   ];
 
   return (
-    <div className="w-full py-6 px-2 md:px-12 bg-white z-40 shadow-lg fixed">
+    <div className="w-full py-6 px-2 pl-4 md:pl-12 md:px-12 bg-white z-40 shadow-lg fixed">
       {/* Desktop view */}
       <div className="hidden md:flex justify-between items-center font-montserrat">
         {/* logo section */}
         <div>
-          <img src="/images/logo.jpg" alt="logo" width={120} height={50} />
+          <img src="/images/navLogo.svg" alt="logo" width={100} height={50} />
         </div>
 
         {/* Navigation section */}
@@ -67,7 +67,7 @@ export const NavBar = () => {
       <div className="flex md:hidden justify-between font-montserrat">
         {/* logo section */}
         <div>
-          <img src="/images/logo.jpg" alt="logo" width={120} height={50} />
+          <img src="/images/navLogo.svg" alt="logo" width={100} height={50} />
         </div>
 
         <div className="flex flex-col items-end relative">

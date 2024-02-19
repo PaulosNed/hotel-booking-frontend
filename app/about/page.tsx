@@ -26,12 +26,12 @@ const page = () => {
       value: "bar",
       title: "BAR & RESTURANT",
       desc: "Ascending to our rooftop sports bar unveils a breathtaking panorama of the city skyline, offering not only a mesmerizing view but an electrifying experience with live sports entertainment. Positioned atop our building, this space merges the thrill of the game with an unparalleled scenic backdrop, inviting guests to unwind amidst the excitement and grandeur. Meanwhile, our lobby bar, a serene enclave within our establishment, provides a peaceful retreat for those seeking a more tranquil atmosphere. Whether in the dynamic energy of our rooftop or the calm embrace of our lobby, we remain dedicated to pampering our guests with an extensive selection of exceptional beverages, ensuring each visit is an exquisite experience tailored to their preferences.",
-      image2:
-        "/images/about/bar/bar_11.jpg",
       image1:
-        "/images/about/story/hotel_3rd.jpg",
+        "/images/about/bar/bar_1.jpg",
+      image2:
+        "/images/about/bar/bar_2.jpg",
       image3:
-        "/images/about/story/hotel_2nd.jpg",
+        "/images/about/bar/bar_3.jpg",
     },
     {
       value: "wellness",

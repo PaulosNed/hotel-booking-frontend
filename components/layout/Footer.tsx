@@ -7,7 +7,7 @@ const Footer = () => {
         <div className="flex flex-col items-center md:items-start md:mt-3">
           <img
             className="mb-4 md:mb-20 w-40"
-            src="/images/logo.jpg"
+            src="/images/logo.svg"
             alt="a2sv logo"
             width={540}
             height={540}
