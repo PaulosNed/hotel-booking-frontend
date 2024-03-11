@@ -12,7 +12,7 @@ const Footer = () => {
             width={540}
             height={540}
           />
-          <p>© Copyright 2023 Nahusenay Hotel Inc.</p>
+          <p>© Copyright 2024 Nahusenay Hotel Inc.</p>
           <p>
             <Link href={"#"}>Terms of service</Link> |{" "}
             <Link href={"#"}>Privacy Policy</Link>
@@ -47,6 +47,7 @@ const Footer = () => {
           </h3>
           <Link href={'/contact'} className="mb-2 hover:text-primary">Questions or feedback?</Link>
           <p className="mb-4 md:mb-20">we would like to hear from you</p>
+          {/* <p className="text-xs text-primary my-2">Developed By: Binary Companion Technologies</p> */}
           <section className="flex justify-between md:justify-start md:gap-6">
             <Link href={"#"}>
               <img src="/images/social-icons/facebook.png" alt="facebook" width={28} height={28}/>
