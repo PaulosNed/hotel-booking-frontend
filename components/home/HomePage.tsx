@@ -22,14 +22,14 @@ const HomePage = () => {
 
   return (
     <>
-      <div className="relative w-full md:h-screen">
+      <div className="relative w-full h-[600px] md:h-screen">
         {/* Background Image Swiper */}
         <Swiper
           loop={true}
           spaceBetween={10}
           autoplay={{ delay: 5000 }}
           modules={[FreeMode, Navigation, Thumbs, Autoplay]}
-          className="absolute inset-0 z-0"
+          className="absolute inset-0 h-full z-0"
         >
           {photos.map((bgImageUrl, i) => (
             <SwiperSlide
@@ -41,7 +41,7 @@ const HomePage = () => {
         </Swiper>
 
         {/* Black overlay */}
-        <div className="absolute inset-0 bg-black opacity-50 z-10"></div>
+        <div className="absolute inset-0 h-full bg-black opacity-50 z-10"></div>
 
         {/* Text and Button */}
         <div className="absolute inset-0 z-20 flex flex-col space-y-24 md:space-y-16 justify-center items-center text-center text-white font-montserrat">
