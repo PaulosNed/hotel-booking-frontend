@@ -46,7 +46,9 @@ export const NavBar = () => {
       <div className="hidden md:flex justify-between items-center font-montserrat">
         {/* logo section */}
         <div>
-          <img src="/images/navLogo.svg" alt="logo" width={100} height={50} />
+          <Link href="/">
+            <img src="/images/navLogo.svg" alt="logo" width={100} height={50} />
+          </Link>
         </div>
 
         {/* Navigation section */}
@@ -67,7 +69,9 @@ export const NavBar = () => {
       <div className="flex md:hidden justify-between font-montserrat">
         {/* logo section */}
         <div>
-          <img src="/images/navLogo.svg" alt="logo" width={100} height={50} />
+          <Link href="/">
+            <img src="/images/navLogo.svg" alt="logo" width={100} height={50} />
+          </Link>
         </div>
 
         <div className="flex flex-col items-end relative">
