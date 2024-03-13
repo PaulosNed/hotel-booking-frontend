@@ -71,7 +71,7 @@ const Page = () => {
                   <img
                     src={image}
                     alt="Slide"
-                    className="rounded-xl w-full h-[200px] md:h-[500px] object-cover mx-auto"
+                    className="rounded-xl w-full h-[200px] md:h-[600px] object-cover mx-auto"
                   />
                 </div>
                 <div className="absolute bottom-0 left-0 w-full z-40 transition-all duration-300">
