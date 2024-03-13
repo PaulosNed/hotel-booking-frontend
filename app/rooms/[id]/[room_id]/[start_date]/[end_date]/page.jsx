@@ -52,7 +52,7 @@ const Page = () => {
   const days = getDaysDifference(start_date, end_date);
 
   return (
-    <div className="w-full md:w-8/12 mx-auto px-3 md:px-10 md:pb-20">
+    <div className="w-full mx-auto px-3 md:px-10 md:pb-20">
       <div className="flex flex-col space-y-10 md:space-y-16">
         <div className="w-full">
           <Swiper
@@ -94,7 +94,7 @@ const Page = () => {
             freeMode={true}
             watchSlidesProgress={true}
             modules={[FreeMode, Navigation, Thumbs]}
-            className="thumbs mt-3 h-10 md:h-24 w-full rounded-lg"
+            className="thumbs mt-3 h-10 md:h-32 w-full rounded-lg"
           >
             {photos.map((image, index) => (
               <SwiperSlide key={index}>
@@ -110,7 +110,7 @@ const Page = () => {
           </Swiper>
         </div>
 
-        <div className="flex flex-col items-center space-y-6 md:space-y-10">
+        <div className="md:w-8/12 md:mx-auto flex flex-col items-center space-y-6 md:space-y-10">
           <h1 className="text-xl md:text-4xl font-bold font-montserrat">
             Description
           </h1>
@@ -118,7 +118,7 @@ const Page = () => {
             {room?.description}
           </p>
         </div>
-        <div className="flex flex-col items-center space-y-6 md:space-y-10">
+        <div className="md:w-8/12 md:mx-auto flex flex-col items-center space-y-6 md:space-y-10">
           <h1 className="text-xl md:text-4xl font-bold font-montserrat">
             Services Provided
           </h1>
