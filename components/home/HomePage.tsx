@@ -27,7 +27,7 @@ const HomePage = () => {
         <Swiper
           loop={true}
           spaceBetween={10}
-          autoplay={{ delay: 5000 }}
+          autoplay={{ delay: 3000 }}
           modules={[FreeMode, Navigation, Thumbs, Autoplay]}
           className="absolute inset-0 h-full z-0"
         >

@@ -17,7 +17,7 @@ import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
 
 
 const ReservationPage = () => {
-  const bgImageUrl = "/images/home/backgroundHotel.jpg";
+  const bgImageUrl = "/images/home/nahu7.jpg";
   const enviroment =
     process.env.NEXT_PUBLIC_ENDPOINT || "http://127.0.0.1:8000";
   const [formData, setFormData] = useState({

@@ -9,7 +9,7 @@ export const metadata: Metadata = {
 
 
 const page = () => {
-  const bgImageUrl = "/images/home/backgroundHotel.jpg";
+  const bgImageUrl = "/images/home/nahu7.jpg";
   const accordionData = [
     {
       value: "story",

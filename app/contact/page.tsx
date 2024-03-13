@@ -13,7 +13,7 @@ interface FormData {
 }
 
 const Page: React.FC = () => {
-  const bgImageUrl = "/images/home/backgroundHotel.jpg";
+  const bgImageUrl = "/images/home/nahu7.jpg";
 
   const [
     contact,
