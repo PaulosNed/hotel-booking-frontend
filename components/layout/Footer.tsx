@@ -43,11 +43,21 @@ const Footer = () => {
         </div>
         <div>
           <h3 className="text-gray-800 font-semibold mt-6 text-xl md:mt-2 mb-3">
+            Phone Numbers
+          </h3>
+          <p className="mb-1">&#x2022; 0111546474</p>
+          <p className="mb-1">&#x2022; 0111546475</p>
+          <p className="mb-4 ">&#x2022; 0966777788</p>
+
+          <h3 className="text-gray-800 font-semibold mt-6 text-xl md:mt-2 mb-3">
             Get in touch
           </h3>
           <Link href={'/contact'} className="mb-2 hover:text-primary">Questions or feedback?</Link>
-          <p className="mb-4 md:mb-20">we would like to hear from you</p>
+          <p className="mb-8 md:mb-10">we would like to hear from you</p>
+          
+          
           {/* <p className="text-xs text-primary my-2">Developed By: Binary Companion Technologies</p> */}
+          
           <section className="flex justify-between md:justify-start md:gap-6">
             <Link href={"#"}>
               <img src="/images/social-icons/facebook.png" alt="facebook" width={28} height={28}/>
