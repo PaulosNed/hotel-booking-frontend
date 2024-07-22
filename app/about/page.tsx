@@ -58,7 +58,7 @@ const page = () => {
     {
       value: "sister",
       title: "Sister Company",
-      desc: "Nahusenay Zeyet Fabrica is our first and currently sister company. Lorem, ipsum dolor sit amet consectetur adipisicing elit. Repudiandae sunt velit veniam, recusandae nobis corporis voluptatem placeat quibusdam voluptatibus eum dignissimos in, praesentium repellat odit necessitatibus mollitia blanditiis omnis facilis?",
+      desc: "Nahusenay Oil Manufacturing Industry, founded in 2015, is a forward-thinking company dedicated to the production and innovation of high-quality oil products. Since its inception, the company has been committed to sustainable practices and excellence, striving to meet the evolving needs of its customers while maintaining a strong focus on environmental responsibility and community development.",
       image2:
         "https://images.pexels.com/photos/941864/pexels-photo-941864.jpeg?cs=srgb&dl=pexels-chan-walrus-941864.jpg&fm=jpg",
       image1:
