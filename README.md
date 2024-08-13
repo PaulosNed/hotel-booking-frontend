@@ -15,6 +15,8 @@ The Nahusenay International Hotel Website was developed to provide a seamless an
 - **Backend**: The backend is hosted on cPanel, providing a robust and reliable environment for managing the website's server-side operations.
 - **Domain**: The domain name for the website was purchased from Yegara Host, a local retailer, and configured through cPanel.
 
+### [Website Link](https://web.nahusenayinternationalhotel.com/)
+
 ### Technologies Used
 
 - **Frontend**: Developed with Next.js for server-side rendering and React for building interactive user interfaces. TailwindCSS and shadCN are used for styling.
